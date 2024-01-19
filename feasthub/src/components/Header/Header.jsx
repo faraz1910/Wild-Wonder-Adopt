@@ -12,17 +12,17 @@ const Header = () => {
                         <img src={logo} alt="Logo" className='h-10' />
                     </Link>
                     <div className="flex items-center lg:order-2">
-                        <Link
+                        {/* <Link
                             to="buyerlogin"
                             className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
                         >
                             Log in
-                        </Link>
+                        </Link> */}
                         <Link
-                            to="buyersignup"
-                            className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                            to="login"
+                            className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
                         >
-                            Sign up
+                            Log In / Register
                         </Link>
                     </div>
                     <div
