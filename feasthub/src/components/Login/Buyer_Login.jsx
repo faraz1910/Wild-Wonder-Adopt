@@ -1,6 +1,22 @@
-import React from 'react'
+import React,{useState} from 'react'
+import {auth} from "../../firebase";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+const Buyer_Login = () => {
+  const [email, setEmail] = useState('');
+  const[password, setPassword] = useState('');
 
-function Buyer_Login() {
+  const buyer_login = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth,email,password)
+    .then((userCredential) => {
+      console.log(userCredential);
+      console.log("Logged in")
+      window.alert(email + " logged in");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
   return (
     <>
         {/* <!-- component --> */}
@@ -81,7 +97,7 @@ function Buyer_Login() {
   {/* <!-- Right Pane --> */}
   <div class="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">
     <div class="max-w-md w-full p-6">
-      <h1 class="text-3xl font-semibold mb-6 text-black text-center">Buyer Log In</h1>
+      <h1 class="text-3xl font-semibold mb-6 text-black text-center">Log In</h1>
       <h1 class="text-sm font-semibold mb-6 text-gray-500 text-center">Join to Our Community with all time access and free </h1>
       <div class="mt-4 flex flex-col lg:flex-row items-center justify-between">
         <div class="w-full lg:w-1/2 mb-2 lg:mb-0">
@@ -103,7 +119,7 @@ function Buyer_Login() {
       <div class="mt-4 text-sm text-gray-600 text-center">
         <p>or with email</p>
       </div>
-      <form action="#" method="POST" class="space-y-4">
+      <form onSubmit={buyer_login} method="POST" class="space-y-4">
         {/* <!-- Your form elements go here --> */}
         {/* <div>
           <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
@@ -111,11 +127,21 @@ function Buyer_Login() {
         </div> */}
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-          <input type="text" id="email" name="email" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"/>
+          <input type="email"
+           id="email"
+           name="email"
+           value={email}
+           onChange={(e) => setEmail(e.target.value)}
+           class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"/>
         </div>
         <div>
           <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-          <input type="password" id="password" name="password" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"/>
+          <input type="password" 
+          id="password" 
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"/>
         </div>
         <div>
           <button type="submit" class="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Log In</button>
@@ -132,4 +158,4 @@ function Buyer_Login() {
   )
 }
 
-export default Buyer_Login
+export default Buyer_Login;

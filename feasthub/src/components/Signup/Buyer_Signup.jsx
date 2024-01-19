@@ -1,6 +1,22 @@
-import React from 'react'
+import React,{useState} from 'react'
+import {createUserWithEmailAndPassword} from "firebase/auth"
+import {auth} from "../../firebase";
 
-function Buyer_Signup() {
+const Buyer_Signup = () => {
+  const [email, setEmail] = useState('');
+  const[password, setPassword] = useState('');
+
+  const buyer_signUp = (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth,email,password)
+    .then((userCredential) => {
+      console.log(userCredential);
+      console.log("test")
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
   return (
     <>
         {/* <!-- component --> */}
@@ -81,7 +97,7 @@ function Buyer_Signup() {
   {/* <!-- Right Pane --> */}
   <div class="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">
     <div class="max-w-md w-full p-6">
-      <h1 class="text-3xl font-semibold mb-6 text-black text-center">Buyer Sign Up</h1>
+      <h1 class="text-3xl font-semibold mb-6 text-black text-center">Sign Up</h1>
       <h1 class="text-sm font-semibold mb-6 text-gray-500 text-center">Join to Our Community with all time access and free </h1>
       <div class="mt-4 flex flex-col lg:flex-row items-center justify-between">
         <div class="w-full lg:w-1/2 mb-2 lg:mb-0">
@@ -103,7 +119,7 @@ function Buyer_Signup() {
       <div class="mt-4 mb-4 text-sm text-gray-600 text-center">
         <p>or with email</p>
       </div>
-      <form action="#" method="POST" class="space-y-4">
+      <form onSubmit={buyer_signUp} method="POST" class="space-y-4" id="signup-form">
         {/* <!-- Your form elements go here --> */}
         <div className='flex justify-around'>
         <div>
@@ -116,8 +132,12 @@ function Buyer_Signup() {
         </div>
         </div>
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-          <input type="text" id="email" name="email" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"/>
+          <label for="email" class="block text-sm font-medium text-gray-700">Emaill</label>
+          <input type="email"
+           id="signup-email"
+           name="email"
+           value={email} onChange={(e) => setEmail(e.target.value)}
+           class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"/>
         </div>
         <div>
           <label for="phone" class="block text-sm font-medium text-gray-700">Phone No.</label>
@@ -125,7 +145,12 @@ function Buyer_Signup() {
         </div>
         <div>
           <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-          <input type="password" id="password" name="password" class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"/>
+          <input type="password" 
+          id="signup-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          name="password" 
+          class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"/>
         </div>
         <div>
           <button type="submit" class="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Sign Up</button>
@@ -142,4 +167,4 @@ function Buyer_Signup() {
   )
 }
 
-export default Buyer_Signup
+export default Buyer_Signup;
