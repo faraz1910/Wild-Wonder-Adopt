@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {createUserWithEmailAndPassword} from "firebase/auth"
-import {auth} from "../../firebase";
+import {secondaryAuth} from "../../firebaseSeller";
 
 const Seller_Signup = () => {
   const [email, setEmail] = useState('');
@@ -8,10 +8,11 @@ const Seller_Signup = () => {
 
   const seller_signUp = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth,email,password)
+    createUserWithEmailAndPassword(secondaryAuth,email,password)
     .then((userCredential) => {
       console.log(userCredential);
       console.log("test")
+      window.alert(email+ " signed up!")
     })
     .catch((error) => {
       console.log(error);

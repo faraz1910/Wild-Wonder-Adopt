@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {auth} from "../../firebase";
+import {secondaryAuth} from "../../firebaseSeller";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 const Seller_Login = () => {
   const [email, setEmail] = useState('');
@@ -7,7 +7,7 @@ const Seller_Login = () => {
 
   const seller_login = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth,email,password)
+    signInWithEmailAndPassword(secondaryAuth,email,password)
     .then((userCredential) => {
       console.log(userCredential);
       console.log("Logged in")

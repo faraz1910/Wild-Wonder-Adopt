@@ -5,12 +5,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCxOOZcj-4ubyRUtJsdbSxU18MeedXroes",
-  authDomain: "feasthub-dev.firebaseapp.com",
-  projectId: "feasthub-dev",
-  storageBucket: "feasthub-dev.appspot.com",
-  messagingSenderId: "223621316895",
-  appId: "1:223621316895:web:7ead5aca4cf97148fa302a"
+  apiKey: "AIzaSyCsy-I1LAlEDLmF1g3LSiewa7q3N5Lodx4",
+  authDomain: "feasthub-buyer.firebaseapp.com",
+  projectId: "feasthub-buyer",
+  storageBucket: "feasthub-buyer.appspot.com",
+  messagingSenderId: "864311238938",
+  appId: "1:864311238938:web:588d1ca71dca4abc5d0ca3"
 };
 
 // Initialize Firebase
