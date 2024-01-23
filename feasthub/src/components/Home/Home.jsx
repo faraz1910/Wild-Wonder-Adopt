@@ -9,11 +9,9 @@ const Home = () => {
           Feast<span className="text-red-600">HUB</span>
         </h1>
         <div className="bg-red-600 px-4 my-3 rounded-lg">
-          <p className="text-3xl text-white my-2 font-bold">
-            Ab Ghar Jaisa Khana, Bahar Bhi
-          </p>
+        <p className="text-3xl text-white my-2 font-bold">Ab Ghar Jaisa Khana, Bahar Bhi</p>
         </div>
-      </div>
+    </div>
     </div>
   );
 };
