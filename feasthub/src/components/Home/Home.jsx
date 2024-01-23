@@ -12,6 +12,7 @@ const Home = () => {
         <p className="text-3xl text-white my-2 font-bold">Ab Ghar Jaisa Khana, Bahar Bhi</p>
         </div>
     </div>
+    </div>
   );
 };
 
