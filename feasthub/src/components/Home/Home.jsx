@@ -27,7 +27,7 @@ const Home = () => {
             </p>
           </div>
           <Link
-            to="#"
+            to="order"
             className="absolute top-3/4 text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
           >
             Order Now

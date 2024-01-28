@@ -16,6 +16,7 @@ import Buyer_Signup from "./components/Signup/Buyer_Signup.jsx";
 import Seller_Login from "./components/Login/Seller_Login.jsx";
 import Seller_Signup from "./components/Signup/Seller_Signup.jsx";
 import Login_Choice from "./components/Login_Choice/Login_Choice.jsx";
+import Order from "./components/Order/Order.jsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
       <Route path="" element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="login" element={<Login_Choice />} />
+      <Route path="order" element={<Order />} />
       <Route path="buyer-login" element={<Buyer_Login />} />
       <Route path="buyer-signup" element={<Buyer_Signup />} />
       <Route path="seller-login" element={<Seller_Login />} />
