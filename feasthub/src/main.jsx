@@ -17,6 +17,8 @@ import Seller_Login from "./components/Login/Seller_Login.jsx";
 import Seller_Signup from "./components/Signup/Seller_Signup.jsx";
 import Login_Choice from "./components/Login_Choice/Login_Choice.jsx";
 import Order from "./components/Order/Order.jsx";
+import SideNav from "./components/SellerModules/SideNav.jsx";
+import SellerMain from "./components/SellerModules/SellerMain.jsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -46,6 +48,9 @@ const router = createBrowserRouter(
       <Route path="buyer-signup" element={<Buyer_Signup />} />
       <Route path="seller-login" element={<Seller_Login />} />
       <Route path="seller-signup" element={<Seller_Signup />} />
+      <Route path="seller" element={<SellerMain />} >
+        
+      </Route>
       <Route path="*" element={<div>Page under maintainance !!!</div>} />
     </Route>
   )
