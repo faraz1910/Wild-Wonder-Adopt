@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <>
-      <header className='shadow-md w-full fixed top-0 left-0 z-50'>
+      <header className='shadow-md w-full sticky top-0 left-0 z-50'>
         <nav className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
           <div
             className="cursor-pointer flex items-center font-[Poppins] 
@@ -43,6 +43,7 @@ const Header = () => {
                       isActive ? "text-red-600" : "text-gray-500"
                     } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-red-700 lg:p-0 lg:mx-4 sm:m-0.5 md:m-0.5 md:text-base text-lg lg:font-semibold`
                   }
+                  onClick={() => setOpen(!open)}
                 >
                   {d.name}
                 </NavLink>
