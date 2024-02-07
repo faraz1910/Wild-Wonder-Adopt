@@ -19,6 +19,7 @@ import Login_Choice from "./components/Login_Choice/Login_Choice.jsx";
 import Order from "./components/Order/Order.jsx";
 import SideNav from "./components/SellerModules/SideNav.jsx";
 import SellerMain from "./components/SellerModules/SellerMain.jsx";
+import WhyUs from "./components/WhyUs/WhyUs.jsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -44,6 +45,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="login" element={<Login_Choice />} />
       <Route path="order" element={<Order />} />
+      <Route path="whyus" element={<WhyUs/>} />
       <Route path="buyer-login" element={<Buyer_Login />} />
       <Route path="buyer-signup" element={<Buyer_Signup />} />
       <Route path="seller-login" element={<Seller_Login />} />
