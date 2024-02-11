@@ -23,7 +23,6 @@ import Profile from "./components/SellerModules/Profile.jsx";
 import Services from "./components/SellerModules/Services.jsx";
 import Menu from "./components/SellerModules/Menu.jsx";
 import Clients from "./components/SellerModules/Clients.jsx";
-
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
