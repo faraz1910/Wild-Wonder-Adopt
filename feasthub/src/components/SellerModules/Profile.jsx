@@ -86,7 +86,7 @@ const Profile = () => {
                 className="input input-bordered w-full"
               />
             </label>
-            <button className="w-full bg-red-600 mt-4 py-3 rounded-xl text-white font-bold mt-6">
+            <button className="w-full bg-red-600 py-3 rounded-xl text-white font-bold mt-6">
               Submit
             </button>
           </div>
