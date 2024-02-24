@@ -5,25 +5,25 @@ import { FaStar } from 'react-icons/fa'
 const Order = () => {
   return (
     <>
-      <div className="w-full  bg-red-100 flex justify-center items-center">
-        <div className="w-3/4">
+      <div className="w-full  bg-white flex justify-center items-center">
+        <div className="md:w-full">
           <div className="flex justify-center items-center">
             <input
               type="text"
-              className="w-1/2 h-10 rounded-xl mt-10 px-4 py-2"
+              className="w-1/2 h-10 rounded-xl mt-10 px-4 py-2 bg-gray-200"
               placeholder="Search Seller..."
             />
             <button className="h-10 rounded-xl mt-10 px-4 py-2 bg-red-500 font-bold text-white ml-2 ">
               Search
             </button>
           </div>
-          <div className="mt-10 pt-10 flex justify-center items-center flex-col">
+          <div className="mt-10 pt-10 flex justify-center items-center flex-col md:flex-row md:flex-wrap md:justify-evenly">
             {seller.map((s) => (
-              <div key={s.id} className="w-3/4 h-64 rounded-2xl p-3 bg-slate-300 flex mb-6">
-                <div className="w-1/4 h-auto rounded-2xl bg-white text-center mr-3">
-                  Image
+              <div key={s.id} className="w-3/4 h-auto flex mb-6 flex-col md:w-96">
+                <div className="w-full h-auto rounded-2xl bg-white text-center mr-3">
+                  <img src={s.img} alt="Seller" />
                 </div>
-                <div className="w-3/4 rounded-2xl p-2 pl-4 h-auto bg-white flex flex-col justify-around">
+                <div className="w-full p-2 pl-4 h-auto flex flex-col justify-around">
                   <div>
                     <h4 className="font-bold text-lg mb-2">{s.name}</h4>
                     <div className="flex">
@@ -33,7 +33,7 @@ const Order = () => {
                      {s.description}
                     </p>
                   </div>
-                  <div className="flex flex-col">
+                  <div className="flex flex-col mt-2">
                     <div className="flex flex-start">
                       {s.breakfast && <span className="px-1 py-0.5 bg-pink-300 text-sm rounded mr-1.5">
                         Breakfast
