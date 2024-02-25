@@ -1,8 +1,36 @@
 import React from "react";
 import { seller } from "../../assets/sellerData";
 import { FaStar } from 'react-icons/fa'
-
+import { useState, useEffect } from "react";
+import {db} from '../../firebaseSeller' 
+import {collection, getDocs} from 'firebase/firestore'//establish a connection to a specific connection
 const Order = () => {
+  const [dataCount, setDataCount] = useState(0);
+  const [businessName, setBusinessName] = useState([]);
+  const businessNameCollectionRef = collection(db,"SellerInfo");
+  
+  useEffect(() => {
+
+    // Fetch data from Firebase and get its count
+    const fetchData = async () => {
+      try {
+        const snapshot = await getDocs(businessNameCollectionRef);
+        const count = snapshot.size; // Get count of items
+        setDataCount(count);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    const getBusinessName = async()=>{
+      const data = await getDocs(businessNameCollectionRef);
+      //console.log(data);
+      //looping through the documents in the collection and setting to businessName array equal to doc
+      setBusinessName(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    };
+    fetchData(); // Call the function to fetch data
+    getBusinessName()
+  },[])
   return (
     <>
       <div className="w-full  bg-white flex justify-center items-center">
@@ -19,38 +47,29 @@ const Order = () => {
           </div>
           <div className="mt-10 pt-10 flex justify-center items-center flex-col md:flex-row md:flex-wrap md:justify-evenly">
             {seller.map((s) => (
-              <div key={s.id} className="w-3/4 h-auto flex mb-6 flex-col md:w-96">
+              <div className="w-3/4 h-auto flex mb-6 flex-col md:w-96">
                 <div className="w-full h-auto rounded-2xl bg-white text-center mr-3">
                   <img src={s.img} alt="Seller" />
                 </div>
                 <div className="w-full p-2 pl-4 h-auto flex flex-col justify-around">
-                  <div>
-                    <h4 className="font-bold text-lg mb-2">{s.name}</h4>
-                    <div className="flex">
-                    {[...Array(5)].map((star, index) => <FaStar color="yellow"/>)}
-                    </div>
-                    <p className="pt-2">
-                     {s.description}
-                    </p>
+                  <div >
+                    {businessName.map((b) => {
+                        return(
+                        <div>
+                          <h4 className="font-bold text-lg mb-2">{b.fname}</h4>
+                        <p className="pt-2">{b.address}</p>
+                        </div>
+                        );
+                    })}
+                    
                   </div>
                   <div className="flex flex-col mt-2">
                     <div className="flex flex-start">
-                      {s.breakfast && <span className="px-1 py-0.5 bg-pink-300 text-sm rounded mr-1.5">
-                        Breakfast
-                      </span>}
-                      {s.lunch && <span className="px-1 py-0.5 bg-pink-300 text-sm rounded mr-1.5">
+                      { <span className="px-1 py-0.5 bg-pink-300 text-sm rounded mr-1.5">
                         Lunch
                       </span>}
-                      {s.dinner && <span className="px-1 py-0.5 bg-pink-300 text-sm rounded mr-1.5">
+                      {<span className="px-1 py-0.5 bg-pink-300 text-sm rounded mr-1.5">
                         Dinner
-                      </span>}
-                    </div>
-                    <div className="flex flex-start mt-2">
-                      {s.veg && <span className="px-1 py-0.5 bg-green-300 text-sm rounded mr-1.5">
-                        Veg
-                      </span>}
-                      {s.nonveg && <span className="px-1 py-0.5 bg-red-300 text-sm rounded mr-1.5">
-                        Non-Veg
                       </span>}
                     </div>
                   </div>

@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <>
       <div className="mx-auto w-full">
-        <div className="h-screen w-full bg-homeimg1 bg-center bg-cover bg-no-repeat -z-0 justify-center items-center flex flex-col">
+        <div className="h-screen w-full bg-homeimg1 bg-center bg-cover bg-no-repeat justify-center items-center flex flex-col">
           <h3 className="text-7xl font-bold text-white lg:text-9xl">
             Feast<span className="text-red-600">HUB</span>
           </h3>

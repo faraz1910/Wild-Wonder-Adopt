@@ -1,11 +1,10 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {secondaryAuth} from "../../firebaseSeller";
 
 const Seller_Signup = () => {
   const [email, setEmail] = useState('');
   const[password, setPassword] = useState('');
-
   const seller_signUp = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(secondaryAuth,email,password)

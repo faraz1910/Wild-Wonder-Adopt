@@ -1,22 +1,35 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import {secondaryAuth} from "../../firebaseSeller";
 import { signInWithEmailAndPassword } from 'firebase/auth';
-
+import {Routes, Route, useNavigate} from 'react-router-dom';
 const Seller_Login = () => {
   const [email, setEmail] = useState('');
   const[password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const navigateToProfile = () => {
+    // 👇️ navigate to /Profile
+    navigate('/../../seller/profile');
+  };
 
   const seller_login = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(secondaryAuth,email,password)
     .then((userCredential) => {
+      
       console.log(userCredential);
       console.log("Logged in")
       window.alert(email + " logged in");
+      
     })
     .catch((error) => {
       console.log(error);
     });
+    useEffect(() => {
+      secondaryAuth.onAuthStateChanged((email) => {
+      setEmail(email);
+      })
+    })
   };
   return (
     <>
@@ -145,7 +158,8 @@ const Seller_Login = () => {
           class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"/>
         </div>
         <div>
-          <button type="submit" class="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Log In</button>
+    
+          <button type="submit" onClick={navigateToProfile} class="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Log In</button>
         </div>
       </form>
       <div class="mt-4 text-sm text-gray-600 text-center">

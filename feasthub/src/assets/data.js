@@ -1,30 +1,19 @@
 const data = [
     {
       name: `Arpit`,
-      img: `/students/John_Morgan.jpg`,
-      review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-    },
-    {
-      name: `Aliya`,
-      img: `/students/Ellie_Anderson.jpg`,
-      review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+      img: `/students/reviewer1.jpg`,
+      review: `The website layout is simple and intuitive, making it easy to navigate on both desktop and mobile devices. Overall, I'm thrilled with this tiffin service website.`
     },
     {
       name: `Shri`,
-      img: `/students/Nia_Adebayo.jpg`,
-      review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+      img: `/students/reviewer2.jpg`,
+      review: `Ordering is a breeze just a few clicks and my meals are sorted for the week. The delivery is always on time, and the packaging is neat and eco-friendly. `
     },
     {
-      name: `Ajeet`,
-      img: `/students/Rigo_Louie.jpg`,
-      review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-    },
-    {
-      name: `Shubh`,
-      img: `/students/Mia_Williams.jpg`,
-      review: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
-    },
-    
+      name: `Priya`,
+      img: `/students/reviewer3.jpg`,
+      review: `Super easy to use and has everything I need. The menu is so diverse. I love how they have different meal plans to fit everyone's needs and budget.`
+    }
   ];
 
   export default data;
