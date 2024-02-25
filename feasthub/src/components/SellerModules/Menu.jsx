@@ -1,20 +1,11 @@
 import React, { useState} from 'react';
 import EditableTable from './EditableTable';
 import TimePicker from './TimePicker';
-import { useState, useEffect } from "react";
-import {db} from '../../firebaseSeller' 
-import {collection, getDocs, addDoc} from 'firebase/firestore'
 const Menu = () => {
   const [file, setFile] = useState();
-  const businessNameCollectionRef = collection(db,"SellerMenu");
-  const [newType, setnewType] = useState("");
-  const [newEmail, setnewEmail] = useState("");
   function handleChange(e) {
       console.log(e.target.files);
       setFile(URL.createObjectURL(e.target.files[0]));
-  }
-  const createMealPlan = async() =>{
-    
   }
   return (
     <div class="ps-7 ... font-serif">
