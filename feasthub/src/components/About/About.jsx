@@ -9,52 +9,35 @@ const AboutUsPage = () => {
     { id: 3, image: 'src/assets/About3.png', title: 'Customizable meal plans' },
   ];
 
-  // Sample review data
-  const reviews = [
-    { id: 1, rating: '★★★★★', content: 'Amazing Variety and Convenience!' },
-    { id: 2, rating: '★★★★★', content: 'Best Blessing for Busy Lives!' },
-    { id: 3, rating: '★★★★★', content: 'Authentic Flavors, Every Time!' },
-  ];
-
   return (
     <div className="container mx-auto my-10 p-8 bg-white shadow-lg">
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-black font-serif mb-4">About Us</h1>
-
+       {/* Our Story section */}
+       <div className="text-center mb-8">
+        <h1 className="text-5xl font-black font-serif mb-4">Our Story</h1>
       </div>
-
+       <div className="bg-gray-200 p-8 rounded-md mb-8">
+          <p class="text-lg font-light">FeastHub is a game-changer for day scholars at VIT Bhopal University. It connects them with local tiffin services, making meal discovery and ordering easy and enjoyable. With a user-friendly interface, it's a seamless experience for both customers and tiffin providers. Say goodbye to hassle and hello to delicious meals!
+</p>
+      </div>
       {/* Features section */}
-      <div className="bg-gray-100 p-8 rounded-md mb-8">
+      <div className="text-center mb-8">
+        <h1 className="text-5xl font-black font-serif mb-4">About Us</h1>
+      </div>
+      <div className="bg-gray-200 p-8 rounded-md mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature) => (
             <div key={feature.id} className="text-center p-4">
               <img src={feature.image} alt={feature.title} className="w-48 h-48 mx-auto mb-4" />
-              <p className="text-gray-800 font-light">{feature.title}</p>
+              <p className="text-gray-600 font-light text-xl">{feature.title}</p>
             </div>
           ))}
         </div>
       </div>
-
-      {/* Customer Reviews section */}
-      <div className="text-center mb-8">
-       <h1 className="text-4xl font-black font-serif mb-4">Customer Reviews</h1>
-      </div>
-      <div className="bg-gray-100 p-8 rounded-md mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.map((review) => (
-            <div key={review.id} className="text-center p-4">
-              <p className="text-4xl font-normal mb-2">{review.rating}</p>
-              <p className="text-gray-800">{review.content}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Contact Us section */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-black font-serif mb-4">Contact Us</h1>
+        <h1 className="text-5xl font-black font-serif mb-4">Contact Us</h1>
       </div>
-      <div className="bg-gray-100 p-8 rounded-md">
+      <div className="bg-gray-200 p-8 rounded-md text-center ">
         <p className="text-gray-600">
           Email: support@yourcompany.com <br />
           Phone: +91-XXXXXXXXXX (General inquiries) <br />

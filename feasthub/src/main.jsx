@@ -23,6 +23,7 @@ import Profile from "./components/SellerModules/Profile.jsx";
 import Services from "./components/SellerModules/Services.jsx";
 import Menu from "./components/SellerModules/Menu.jsx";
 import Clients from "./components/SellerModules/Clients.jsx";
+import Contact from "./components/ContactUs/Contact.jsx";
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
@@ -52,6 +53,7 @@ const router = createBrowserRouter(
       <Route path="buyer-signup" element={<Buyer_Signup />} />
       <Route path="seller-login" element={<Seller_Login />} />
       <Route path="seller-signup" element={<Seller_Signup />} />
+      <Route path="Contact" element={<Contact />} />
       <Route path="seller/" element={<SellerMain />} >
         <Route path="profile" element={<Profile/>}/>
         <Route path="services" element={<Services/>}/>
