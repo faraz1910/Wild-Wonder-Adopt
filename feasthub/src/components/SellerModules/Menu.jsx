@@ -1,12 +1,20 @@
 import React, { useState} from 'react';
 import EditableTable from './EditableTable';
 import TimePicker from './TimePicker';
-
+import { useState, useEffect } from "react";
+import {db} from '../../firebaseSeller' 
+import {collection, getDocs, addDoc} from 'firebase/firestore'
 const Menu = () => {
   const [file, setFile] = useState();
+  const businessNameCollectionRef = collection(db,"SellerMenu");
+  const [newType, setnewType] = useState("");
+  const [newEmail, setnewEmail] = useState("");
   function handleChange(e) {
       console.log(e.target.files);
       setFile(URL.createObjectURL(e.target.files[0]));
+  }
+  const createMealPlan = async() =>{
+    
   }
   return (
     <div class="ps-7 ... font-serif">
@@ -37,7 +45,7 @@ const Menu = () => {
         <p class="pt-3">Lunch  <TimePicker></TimePicker> Dinner  <TimePicker></TimePicker></p>
         <hr class="h-px my-8 bg-gray-300 border-0 light:bg-gray-700 w-full ..."/>
 
-        <button type='submit' class='w-1/2 bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300 place-content-center'>Save</button>
+        <button type='submit' onClick={createMealPlan} class='w-1/2 bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300 place-content-center'>Save</button>
       </div>
     </div>
   );

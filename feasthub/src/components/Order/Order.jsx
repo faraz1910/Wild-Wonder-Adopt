@@ -2,13 +2,16 @@ import React from "react";
 import { seller } from "../../assets/sellerData";
 import { FaStar } from 'react-icons/fa'
 import { useState, useEffect } from "react";
-import {db} from '../../firebaseSeller' 
-import {collection, getDocs} from 'firebase/firestore'//establish a connection to a specific connection
+import { db } from '../../firebaseSeller';
+import { collection, getDocs } from 'firebase/firestore' //establish a connection to a specific connection
+
 const Order = () => {
   const [dataCount, setDataCount] = useState(0);
   const [businessName, setBusinessName] = useState([]);
-  const businessNameCollectionRef = collection(db,"SellerInfo");
+  const businessNameCollectionRef = collection(db, "SellerInfo");
+
   
+
   useEffect(() => {
 
     // Fetch data from Firebase and get its count
@@ -22,15 +25,15 @@ const Order = () => {
       }
     };
 
-    const getBusinessName = async()=>{
+    const getBusinessName = async () => {
       const data = await getDocs(businessNameCollectionRef);
       //console.log(data);
       //looping through the documents in the collection and setting to businessName array equal to doc
-      setBusinessName(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+      setBusinessName(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     };
     fetchData(); // Call the function to fetch data
     getBusinessName()
-  },[])
+  }, [])
   return (
     <>
       <div className="w-full  bg-white flex justify-center items-center">
@@ -45,33 +48,23 @@ const Order = () => {
               Search
             </button>
           </div>
-          <div className="mt-10 pt-10 flex justify-center items-center flex-col md:flex-row md:flex-wrap md:justify-evenly">
-            {seller.map((s) => (
-              <div className="w-3/4 h-auto flex mb-6 flex-col md:w-96">
-                <div className="w-full h-auto rounded-2xl bg-white text-center mr-3">
-                  <img src={s.img} alt="Seller" />
+          <div className="mt-10 pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {businessName.map((b) => (
+              <div key={b.id} className="w-full rounded-2xl bg-white">
+                <div className="h-64 overflow-hidden rounded-t-2xl">
+                  <img src="src/assets/orderImg.jpg" alt="Seller" className="w-full h-full object-cover" />
                 </div>
-                <div className="w-full p-2 pl-4 h-auto flex flex-col justify-around">
-                  <div >
-                    {businessName.map((b) => {
-                        return(
-                        <div>
-                          <h4 className="font-bold text-lg mb-2">{b.fname}</h4>
-                        <p className="pt-2">{b.address}</p>
-                        </div>
-                        );
-                    })}
-                    
-                  </div>
-                  <div className="flex flex-col mt-2">
-                    <div className="flex flex-start">
-                      { <span className="px-1 py-0.5 bg-pink-300 text-sm rounded mr-1.5">
-                        Lunch
-                      </span>}
-                      {<span className="px-1 py-0.5 bg-pink-300 text-sm rounded mr-1.5">
-                        Dinner
-                      </span>}
-                    </div>
+                <div className="p-4">
+                  <h4 className="font-bold text-lg mb-2">{b.businessName}</h4>
+                  <h5 className="font-bold text-lg mb-2">{b.fname} {b.lname}</h5>
+                  <p className="mb-4">{b.address}</p>
+                  <div className="flex">
+                    <span className="px-2 py-1 bg-pink-300 text-sm rounded mr-2">
+                      Lunch
+                    </span>
+                    <span className="px-2 py-1 bg-pink-300 text-sm rounded mr-2">
+                      Dinner
+                    </span>
                   </div>
                 </div>
               </div>

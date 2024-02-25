@@ -1,7 +1,26 @@
 import React from "react";
 import { signOut } from 'firebase/auth' 
-
+import { useState, useEffect } from "react";
+import {db} from '../../firebaseSeller' 
+import {collection, getDocs, addDoc} from 'firebase/firestore'
 const Profile = () => {
+  const businessNameCollectionRef = collection(db,"SellerInfo");
+  const [newFirstName, setnewFirstName] = useState("");
+  const [newLasttName, setnewLasttName] = useState("");
+  const [newBusinessName, setBusinessName] = useState("");
+  const [newGst, setnewGst] = useState("");
+  const [newPhone, setnewPhone] = useState(0);
+  const [newAddress, setnewAddress] = useState("");
+  const createSeller = async () => {
+    await addDoc(businessNameCollectionRef, 
+      {fname:newFirstName,
+      lname: newLasttName, 
+      businessName: newBusinessName, 
+      gstNo: newGst, 
+      phone: newPhone, 
+      address: newAddress});
+      alert("Seller added successfully!");
+  }
   return (
     <>
      <div className='center'>
@@ -24,6 +43,7 @@ const Profile = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full max-w-xs"
+                onChange={(event) => {setnewFirstName(event.target.value)}}
               />
             </label>
             <label className="form-control w-full max-w-xs mx-3">
@@ -37,13 +57,14 @@ const Profile = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full max-w-xs"
+                onChange={(event) => {setnewLasttName(event.target.value)}}
               />
             </label>
           </div>
           <div className="w-full px-3">
             <label className="form-control w-full">
               <div className="label">
-                <span className="label-text">Seller Name</span>
+                <span className="label-text">Business Name</span>
                 <span className="label-text-al text-red-600 text-xl font-bold">
                   *
                 </span>
@@ -52,6 +73,7 @@ const Profile = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full"
+                onChange={(event) => {setBusinessName(event.target.value)}}
               />
             </label>
             <label className="form-control w-full">
@@ -65,6 +87,7 @@ const Profile = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full"
+                onChange={(event) => {setnewGst(event.target.value)}}
               />
             </label>
             <label className="form-control w-full">
@@ -78,6 +101,7 @@ const Profile = () => {
                 type="number"
                 placeholder=""
                 className="input input-bordered w-full"
+                onChange={(event) => {setnewPhone(event.target.value)}}
               />
             </label>
             <label className="form-control w-full">
@@ -91,9 +115,10 @@ const Profile = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full"
+                onChange={(event) => {setnewAddress(event.target.value)}}
               />
             </label>
-            <button className="w-full bg-red-600 py-3 rounded-xl text-white font-bold mt-6">
+            <button onClick={createSeller} className="w-full bg-red-600 py-3 rounded-xl text-white font-bold mt-6">
               Submit
             </button>
           </div>
