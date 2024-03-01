@@ -33,6 +33,7 @@ const Contact = () => {
                 type="text"
                 placeholder=""
                 className='bg-stone-200 h-9'
+                onChange={(event) => {setnewName(event.target.value)}}
               />
             </label>
             <label className="form-control w-full max-w-xs mx-3">
@@ -43,13 +44,19 @@ const Contact = () => {
                 type="email"
                 placeholder=""
                 className='bg-stone-200 h-9'
+                onChange={(event) => {setnewEmail(event.target.value)}}
               />
             </label>
             <label className="form-control w-full max-w-xs mx-3">
               <div className="label">
                 <span className="label-text">Message</span>
               </div>
-              <textarea name="message" id="" cols="30" rows="10" className='bg-stone-200'></textarea>
+              <textarea name="message"
+               id="" cols="30"
+                rows="10" 
+                className='bg-stone-200'
+                onChange={(event) => {setnewMessage(event.target.value)}}
+                ></textarea>
             </label>
             <div className='w-8/12 pb-52'> <button onClick={contactUs} className="w-10/12 bg-red-600 mt-4 py-3 rounded-xl text-white font-bold mt-6">
               Send Message
