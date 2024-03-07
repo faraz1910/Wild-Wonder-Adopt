@@ -1,6 +1,7 @@
 import React from "react";
 import { seller } from "../../assets/sellerData";
 import { FaStar } from 'react-icons/fa'
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { db } from '../../firebaseSeller';
 import { collection, getDocs } from 'firebase/firestore' //establish a connection to a specific connection
@@ -67,6 +68,11 @@ const Order = () => {
                       Dinner
                     </span>
                   </div>
+                  <Link to="orderinfo">
+                  <div className="flex justify-center">
+                  <button className="mt-4 text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">&gt;</button>
+                  </div>
+                  </Link>
                 </div>
               </div>
             ))}

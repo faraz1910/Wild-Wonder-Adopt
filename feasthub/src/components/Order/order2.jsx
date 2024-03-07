@@ -1,6 +1,6 @@
 import React from 'react'
 
-const order2 = () => {
+const Order2 = () => {
   return (
 <>
 <div className="w-full h-screen flex justify-center items-center bg-white">
@@ -47,4 +47,4 @@ const order2 = () => {
   )
 }
 
-export default order2
+export default Order2
