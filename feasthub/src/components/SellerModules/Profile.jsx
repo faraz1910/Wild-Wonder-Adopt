@@ -1,25 +1,32 @@
-import React from "react";
-import { signOut } from 'firebase/auth' 
-import { useState, useEffect } from "react";
-import {db} from '../../firebaseSeller' 
-import {collection, getDocs, addDoc} from 'firebase/firestore'
+import React, { useState, useEffect } from "react";
+import { signOut } from 'firebase/auth';
+import { useLocation } from 'react-router-dom';
+import { db } from '../../firebaseSeller';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
+
 const Profile = () => {
-  const businessNameCollectionRef = collection(db,"SellerInfo");
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const userEmail = queryParams.get('email');
+
+  const businessNameCollectionRef = collection(db, "SellerInfo");
   const [newFirstName, setnewFirstName] = useState("");
   const [newLasttName, setnewLasttName] = useState("");
   const [newBusinessName, setBusinessName] = useState("");
   const [newGst, setnewGst] = useState("");
   const [newPhone, setnewPhone] = useState(0);
   const [newAddress, setnewAddress] = useState("");
+
   const createSeller = async () => {
-    await addDoc(businessNameCollectionRef, 
-      {fname:newFirstName,
-      lname: newLasttName, 
-      businessName: newBusinessName, 
-      gstNo: newGst, 
-      phone: newPhone, 
-      address: newAddress});
-      alert("Seller added successfully!");
+    await addDoc(businessNameCollectionRef, {
+      fname: newFirstName,
+      lname: newLasttName,
+      businessName: newBusinessName,
+      gstNo: newGst,
+      phone: newPhone,
+      address: newAddress
+    });
+    alert("Seller added successfully!");
   }
   return (
     <>
