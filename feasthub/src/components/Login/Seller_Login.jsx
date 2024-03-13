@@ -1,40 +1,69 @@
-import React,{useState, useEffect} from 'react'
-import {secondaryAuth} from "../../firebaseSeller";
+import React, { useState, useEffect } from 'react';
+import { secondaryAuth } from "../../firebaseSeller";
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 const Seller_Login = () => {
-  const [email, setEmail] = useState('');
-  const[password, setPassword] = useState('');
+  const [email, setEmail] = useState(''); // Initialize with empty string
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const navigateToProfile = () => {
-    // 👇️ navigate to /Profile
-    navigate('/../../seller/profile');
-  };
+  useEffect(() => {
+    const unsubscribe = secondaryAuth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        setEmail(user.email);
+      } else {
+        // No user is signed in.
+        setEmail('');
+      }
+    });
+
+    return () => {
+      // Cleanup
+      unsubscribe();
+    };
+  }, []); // Runs only on component mount
 
   const seller_login = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(secondaryAuth,email,password)
-    .then((userCredential) => {
-      
-      console.log(userCredential);
-      console.log("Logged in")
-      window.alert(email + " logged in");
-      
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    useEffect(() => {
-      secondaryAuth.onAuthStateChanged((email) => {
-      setEmail(email);
+    signInWithEmailAndPassword(secondaryAuth, email, password)
+      .then(() => {
+        console.log("Logged in");
+        window.alert(email + " logged in");
+        navigate(`/seller/profile?email=${email}`); // Redirect to profile page with email parameter
       })
-    })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+
   return (
     <>
+    
         {/* <!-- component --> */}
+        {/* Navbar */}
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          {email ? (
+            <li>{email}</li>
+          ) : (
+            <li>
+              <form onSubmit={seller_login}>
+                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <button type="submit">Login</button>
+              </form>
+            </li>
+          )}
+        </ul>
+      </nav>
+        
 <div class="flex h-screen">
+  
   {/* <!-- Left Pane --> */}
   <div class="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
     <div class="max-w-md text-center">
@@ -159,7 +188,7 @@ const Seller_Login = () => {
         </div>
         <div>
     
-          <button type="submit" onClick={navigateToProfile} class="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Log In</button>
+          <button type="submit" class="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Log In</button>
         </div>
       </form>
       <div class="mt-4 text-sm text-gray-600 text-center">
