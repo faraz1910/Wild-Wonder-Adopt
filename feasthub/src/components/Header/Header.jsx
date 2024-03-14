@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { IoMenu } from "react-icons/io5";
+import {auth} from "../../firebase";
 import { secondaryAuth } from "../../firebaseSeller";
 
 const Header = () => {
@@ -15,6 +16,7 @@ const Header = () => {
 
   const [open, setOpen] = useState(false);
   const [sellerEmail, setSellerEmail] = useState(null);
+  const [BuyerEmail, setBuyerEmail] = useState(null);
 
   useEffect(() => {
     const unsubscribe = secondaryAuth.onAuthStateChanged((user) => {
@@ -32,9 +34,33 @@ const Header = () => {
       unsubscribe();
     };
   }, []);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        setBuyerEmail(user.email);
+      } else {
+        // No user is signed in.
+        setBuyerEmail(null);
+      }
+    });
+
+    return () => {
+      // Cleanup
+      unsubscribe();
+    };
+  }, []);
 
   const handleLogout = () => {
-    secondaryAuth.signOut();
+    secondaryAuth
+      .signOut()
+      .then(() => {
+        console.log("Logout successful. Redirecting to home page...");
+        history.push(""); // Redirect to home page after logout
+      })
+      .catch((error) => {
+        console.log("Error occurred during logout:", error);
+      });
   };
   
 
@@ -75,25 +101,37 @@ const Header = () => {
             ))}
           </ul>
           {sellerEmail ? (
-            <div className="flex items-center">
-              <span className="text-gray-700 mr-4 font-medium">
-                Logged in as: {sellerEmail}
-              </span>
-              <button
-                onClick={handleLogout}
-                className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-              >
-                Logout
-              </button>
-            </div>
-          ) : (
-            <Link
-              to="login"
-              className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none absolute top-6 right-16 md:static"
-            >
-              Log In / Register
-            </Link>
-          )}
+  <div className="flex items-center">
+    <span className="text-gray-700 mr-4 font-medium">
+      Logged in as: {sellerEmail}
+    </span>
+    <button
+      onClick={handleLogout}
+      className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+    >
+      Logout
+    </button>
+  </div>
+) : BuyerEmail ? (
+  <div className="flex items-center">
+    <span className="text-gray-700 mr-4 font-medium">
+      Logged in as: {BuyerEmail}
+    </span>
+    <button
+      onClick={handleLogout}
+      className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+    >
+      Logout
+    </button>
+  </div>
+) : (
+  <Link
+    to="login"
+    className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none absolute top-6 right-16 md:static"
+  >
+    Log In / Register
+  </Link>
+)}
         </nav>
       </header>
     </>

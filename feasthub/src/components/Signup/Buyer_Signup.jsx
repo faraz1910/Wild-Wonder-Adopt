@@ -12,6 +12,7 @@ const Buyer_Signup = () => {
     .then((userCredential) => {
       console.log(userCredential);
       console.log("test")
+      alert("Successfully SignedUp")
     })
     .catch((error) => {
       console.log(error);

@@ -1,22 +1,46 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react';
 import {auth} from "../../firebase";
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+
 const Buyer_Login = () => {
-  const [email, setEmail] = useState('');
-  const[password, setPassword] = useState('');
+  const [email, setEmail] = useState(''); // Initialize with empty string
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        setEmail(user.email);
+      } else {
+        // No user is signed in.
+        setEmail('');
+      }
+    });
+
+    return () => {
+      // Cleanup
+      unsubscribe();
+    };
+  }, []); // Runs only on component mount
 
   const buyer_login = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth,email,password)
-    .then((userCredential) => {
-      console.log(userCredential);
-      console.log("Logged in")
-      window.alert(email + " logged in");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+        console.log("Logged in");
+        window.alert(email + " logged in");
+        navigate(`/order?email=${email}`); // Redirect to profile page with email parameter
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+    
+    
   return (
     <>
         {/* <!-- component --> */}
