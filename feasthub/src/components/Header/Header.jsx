@@ -62,6 +62,18 @@ const Header = () => {
         console.log("Error occurred during logout:", error);
       });
   };
+  const handleLogoutBuyer = () => {
+    auth
+      .signOut()
+      .then(() => {
+        console.log("Logout successful. Redirecting to home page...");
+        history.push(""); // Redirect to home page after logout
+      })
+      .catch((error) => {
+        console.log("Error occurred during logout:", error);
+      });
+  };
+  
   
 
   return (
@@ -117,12 +129,13 @@ const Header = () => {
     <span className="text-gray-700 mr-4 font-medium">
       Logged in as: {BuyerEmail}
     </span>
+    <Link to="/">
     <button
-      onClick={handleLogout}
+      onClick={handleLogoutBuyer}
       className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
     >
       Logout
-    </button>
+    </button></Link>
   </div>
 ) : (
   <Link
