@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const SideNav = () => {
   return (
     <>
-      <div className="h-screen w-64 border-r-2 p-5">
+      <div className="h-screen w-64  p-5">
         <div className="">
           <p className="font-bold">Seller</p>
           <h4 className="text-3xl font-bold -mt-2 text-red-600">Dashboard</h4>

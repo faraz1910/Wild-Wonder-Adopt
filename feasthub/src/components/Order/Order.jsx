@@ -35,9 +35,10 @@ const Order = () => {
     fetchData(); // Call the function to fetch data
     getBusinessName()
   }, [])
+  
   return (
     <>
-      <div className="w-full  bg-white flex justify-center items-center">
+      <div className="w-full  bg-white flex justify-center items-center mb-20 px-10">
         <div className="md:w-full">
           <div className="flex justify-center items-center">
             <input
@@ -49,9 +50,9 @@ const Order = () => {
               Search
             </button>
           </div>
-          <div className="mt-10 pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="mt-10 pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {businessName.map((b) => (
-              <div key={b.id} className="w-full rounded-2xl bg-white">
+              <div key={b.id} className="w-full rounded-xl bg-white shadow-xl">
                 <div className="h-64 overflow-hidden rounded-t-2xl">
                   <img src="src/assets/orderImg.jpg" alt="Seller" className="w-full h-full object-cover" />
                 </div>
@@ -60,19 +61,20 @@ const Order = () => {
                   <h5 className="font-bold text-lg mb-2">{b.fname} {b.lname}</h5>
                   <p className="mb-4">{b.address}</p>
                   <p className="mb-4">{b.phone}</p>
-                  <div className="flex">
+                  <div className="flex justify-between items-center">
+                    <div>
                     <span className="px-2 py-1 bg-pink-300 text-sm rounded mr-2">
                       Lunch
                     </span>
                     <span className="px-2 py-1 bg-pink-300 text-sm rounded mr-2">
                       Dinner
                     </span>
-                  </div>
-                  <Link to="orderinfo">
-                  <div className="flex justify-center">
-                  <button className="mt-4 text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">&gt;</button>
-                  </div>
+                    </div>
+                    <Link to="orderinfo">
+                  <button className="text-white bg-red-600 focus:ring-4 focus:ring-red-300 font-extrabold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none">View Info</button>
                   </Link>
+                  </div>
+                  
                 </div>
               </div>
             ))}
