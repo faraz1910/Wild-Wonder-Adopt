@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 const SellerMain = () => {
   return (
     <>
-      <div className="w-full h-screen flex">
+      <div className="w-full h-full flex">
         <SideNav />
         <div className="w-full">
           {/* <Profile /> */}

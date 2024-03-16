@@ -3,7 +3,7 @@ import React from 'react'
 const MenuTable = () => {
   return (
     <>
-        <div className="p-5 h-screen bg-gray-100">
+        <div className="p-5 h-full mb-20 bg-gray-100">
             <h1 className="text-xl mb-2">Menu</h1>
 
             <div className="overflow-auto rounded-lg shadow">

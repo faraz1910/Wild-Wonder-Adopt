@@ -38,7 +38,7 @@ const Order = () => {
   
   return (
     <>
-      <div className="w-full  bg-white flex justify-center items-center">
+      <div className="w-full  bg-white flex justify-center items-center mb-20 px-10">
         <div className="md:w-full">
           <div className="flex justify-center items-center">
             <input
@@ -50,9 +50,9 @@ const Order = () => {
               Search
             </button>
           </div>
-          <div className="mt-10 pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="mt-10 pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {businessName.map((b) => (
-              <div key={b.id} className="w-full rounded-2xl bg-white">
+              <div key={b.id} className="w-full rounded-xl bg-white shadow-xl">
                 <div className="h-64 overflow-hidden rounded-t-2xl">
                   <img src="src/assets/orderImg.jpg" alt="Seller" className="w-full h-full object-cover" />
                 </div>

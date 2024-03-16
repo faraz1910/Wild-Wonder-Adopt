@@ -80,7 +80,7 @@ const Header = () => {
           {sellerEmail ? (
             <div className="flex items-center">
               <span className="text-gray-700 mr-4 font-medium">
-                Logged in as: {sellerEmail}
+                {sellerEmail}
               </span>
               <Link to="/">
                 <button

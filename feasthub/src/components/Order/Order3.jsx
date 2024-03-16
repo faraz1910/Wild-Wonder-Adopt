@@ -59,9 +59,6 @@ const Order3 = () => {
       <div className="w-full mt-7">
         <MenuTable />
       </div>
-
-      {/* Select Plan */}
-      <div className=""></div>
     </>
   );
 };
