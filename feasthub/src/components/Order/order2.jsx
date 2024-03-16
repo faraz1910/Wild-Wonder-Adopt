@@ -19,11 +19,12 @@ const Order2 = () => {
             <div>
               <span className="text-2xl">
                 <ul className="list-disc pl-4">
-                  <li>Seller name : Lorem, ipsum.</li>
-                  <li>Menu : Lorem ipsum dolor sit. </li>
+                  <li>Seller name :Vegetarian's Paradise</li>
+                  <li>Menu : 1 Vegetable, 1 Dal, 3 Chapati, 1 Rice, 1 Salad/Soup </li>
                   <li>Contact : 845386792493</li>
-                  <li>Price : 599</li>
+                  <li>Price : 1000</li>
                 </ul>
+
               </span>
             </div>
           </div>

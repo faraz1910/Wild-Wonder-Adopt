@@ -21,7 +21,7 @@ const WhyUs = () => {
  <div className="bg-neutral-300">
   <div className="relative h-screen flex items-center justify-end bg-cover bg-center" style={{ backgroundImage: `url(${'/src/assets/whyus1.jpg'})` }}>
     <div className="text-neutral-300 text-right pr-8 absolute top-1/4">
-      <h1 className="text-7xl mb-10">Food at your Doorsteps!</h1>
+      <h1 className="text-7xl mb-10">Ghar ka khanna bahar bhi!</h1>
       <h3 className="text-2xl mb-2"> Experience the convenience and variety that FeastHUB brings to your</h3>
       <h3 className="text-2xl mb-2">   doorstep, making every meal a delightful part of your day!  </h3>
       <h3 className="text-2xl mb-2">A centralized solution, simplifying the process</h3>
