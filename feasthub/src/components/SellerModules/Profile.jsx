@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { signOut } from 'firebase/auth';
 import { useLocation } from 'react-router-dom';
 import { db } from '../../firebaseSeller';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
+
 const Profile = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -16,7 +17,6 @@ const Profile = () => {
   const [newPhone, setnewPhone] = useState(0);
   const [newAddress, setnewAddress] = useState("");
   const [newPrice, setnewPrice] = useState("");
-  const [newEmail, setnewEmail] = useState("");
 
   const createSeller = async () => {
     await addDoc(businessNameCollectionRef, {
@@ -27,27 +27,26 @@ const Profile = () => {
       phone: newPhone,
       address: newAddress,
       price: newPrice,
-      email: newEmail,
+      email: userEmail, // Use userEmail obtained from URL parameters
     });
     alert("Seller added successfully!");
   }
+
   return (
     <>
-     <div className='center'>
-      <div className='profile'>
-        <h1>Profile</h1>
-        <span onClick={() => signOut(auth)}>Sign Out</span>
+      <div className='center'>
+        <div className='profile'>
+          <h1>Profile</h1>
+          <span onClick={() => signOut(auth)}>Sign Out</span>
+        </div>
       </div>
-    </div>
       <div className="w-full h-screen flex justify-center items-center bg-white">
         <div className="h-auto flex flex-col justify-center items-center bg-slate-200 rounded-2xl px-6 py-6">
           <div className="flex">
             <label className="form-control w-full max-w-xs mx-3">
               <div className="label">
                 <span className="label-text">First Name</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">
-                  *
-                </span>
+                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="text"
@@ -59,9 +58,7 @@ const Profile = () => {
             <label className="form-control w-full max-w-xs mx-3">
               <div className="label">
                 <span className="label-text">Last Name</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">
-                  *
-                </span>
+                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="text"
@@ -75,9 +72,7 @@ const Profile = () => {
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">Email Address</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">
-                  *
-                </span>
+                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="email"
@@ -91,9 +86,7 @@ const Profile = () => {
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">Business Name</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">
-                  *
-                </span>
+                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="text"
@@ -102,13 +95,10 @@ const Profile = () => {
                 onChange={(event) => {setBusinessName(event.target.value)}}
               />
             </label>
-            
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">GST No.</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">
-                  *
-                </span>
+                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="text"
@@ -120,9 +110,7 @@ const Profile = () => {
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">Phone No.</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">
-                  *
-                </span>
+                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="number"
@@ -134,9 +122,7 @@ const Profile = () => {
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">Address</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">
-                  *
-                </span>
+                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="text"
@@ -144,16 +130,16 @@ const Profile = () => {
                 className="input input-bordered w-full"
                 onChange={(event) => {setnewAddress(event.target.value)}}
               />
-            </label> <br />
+            </label>
             <label className="form-control w-full">
-            <span className="label-text">Set Price per day</span>
-                <input
-              type="text"
-              placeholder="Set price per day"
-              className="input input-bordered w-full"
-              onChange={(event) => {setnewPrice(event.target.value)}}
-            />
-               </label>
+              <span className="label-text">Set Price per day</span>
+              <input
+                type="text"
+                placeholder="Set price per day"
+                className="input input-bordered w-full"
+                onChange={(event) => {setnewPrice(event.target.value)}}
+              />
+            </label>
             <button onClick={createSeller} className="w-full bg-red-600 py-3 rounded-xl text-white font-bold mt-6">
               Submit
             </button>

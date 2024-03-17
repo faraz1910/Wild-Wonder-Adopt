@@ -2,28 +2,27 @@ import React, { useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebaseSeller";
 
-const MenuTable = ({ heading }) => {
+const MenuTable = ({ heading, sellerEmail }) => {
   const [menuItem, setMenuItem] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
-      const docRef = doc(db, "SellerMenu", "XwGcxBnNzCDkaTRStDpf");
-      const unsubscribe = onSnapshot(docRef, (doc) => {
-        if (doc.exists()) {
-          setMenuItem(doc.data());
-        } else {
-          // Handle the case where the document doesn't exist or is empty
-          console.log("No data available");
-        }
-      });
-      return () => unsubscribe();
-    };
+    if (sellerEmail) {
+      const fetchData = async () => {
+        const docRef = doc(db, "SellerMenu", sellerEmail);
+        const unsubscribe = onSnapshot(docRef, (doc) => {
+          if (doc.exists()) {
+            setMenuItem(doc.data());
+          } else {
+            // Handle the case where the document doesn't exist or is empty
+            console.log("No data available");
+          }
+        });
+        return () => unsubscribe();
+      };
 
-    fetchData();
-  }, []);
-
-
-  console.log(menuItem.friday_dinner);
+      fetchData();
+    }
+  }, [sellerEmail]);
 
   return (
     <>
@@ -56,10 +55,16 @@ const MenuTable = ({ heading }) => {
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                {menuItem.monday_lunch && menuItem.monday_lunch.map(item => <p>{item}</p>)}
+                  {menuItem.monday_lunch &&
+                    menuItem.monday_lunch.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                {menuItem.monday_dinner && menuItem.monday_dinner.map(item => <p>{item}</p>)}
+                  {menuItem.monday_dinner &&
+                    menuItem.monday_dinner.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
               </tr>
               <tr className="bg-gray-50">
@@ -71,11 +76,17 @@ const MenuTable = ({ heading }) => {
                     Tuesday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                {menuItem.tuesday_lunch && menuItem.tuesday_lunch.map(item => <p>{item}</p>)}
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                  {menuItem.tuesday_lunch &&
+                    menuItem.tuesday_lunch.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                {menuItem.tuesday_dinner && menuItem.tuesday_dinner.map(item => <p>{item}</p>)}
+                  {menuItem.tuesday_dinner &&
+                    menuItem.tuesday_dinner.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
               </tr>
               <tr className="bg-white">
@@ -87,11 +98,17 @@ const MenuTable = ({ heading }) => {
                     Wednesday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                {menuItem.wednesday_lunch && menuItem.wednesday_lunch.map(item => <p>{item}</p>)}
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                  {menuItem.wednesday_lunch &&
+                    menuItem.wednesday_lunch.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                {menuItem.wednesday_dinner && menuItem.wednesday_dinner.map(item => <p>{item}</p>)}
+                  {menuItem.wednesday_dinner &&
+                    menuItem.wednesday_dinner.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
               </tr>
               <tr className="bg-gray-50">
@@ -103,11 +120,17 @@ const MenuTable = ({ heading }) => {
                     Thursday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                {menuItem.thursday_lunch && menuItem.thursday_lunch.map(item => <p>{item}</p>)}
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                  {menuItem.thursday_lunch &&
+                    menuItem.thursday_lunch.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                {menuItem.thursday_dinner && menuItem.thursday_dinner.map(item => <p>{item}</p>)}
+                  {menuItem.thursday_dinner &&
+                    menuItem.thursday_dinner.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
               </tr>
               <tr className="bg-white">
@@ -119,11 +142,17 @@ const MenuTable = ({ heading }) => {
                     Friday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  {menuItem.friday_lunch && menuItem.friday_lunch.map(item => <p>{item}</p>)}
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                  {menuItem.friday_lunch &&
+                    menuItem.friday_lunch.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                {menuItem.friday_dinner && menuItem.friday_dinner.map(item => <p>{item}</p>)}
+                  {menuItem.friday_dinner &&
+                    menuItem.friday_dinner.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
               </tr>
               <tr className="bg-gray-50">
@@ -135,11 +164,39 @@ const MenuTable = ({ heading }) => {
                     Saturday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                {menuItem.saturday_lunch && menuItem.saturday_lunch.map(item => <p>{item}</p>)}
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                  {menuItem.saturday_lunch &&
+                    menuItem.saturday_lunch.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                {menuItem.saturday_dinner && menuItem.saturday_dinner.map(item => <p>{item}</p>)}
+                  {menuItem.saturday_dinner &&
+                    menuItem.saturday_dinner.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
+                </td>
+              </tr>
+              <tr className="bg-white">
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  <a
+                    href="#"
+                    className="font-bold text-blue-500 hover:underline"
+                  >
+                    Sunday
+                  </a>
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                  {menuItem.sunday_lunch &&
+                    menuItem.sunday_lunch.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  {menuItem.sunday_dinner &&
+                    menuItem.sunday_dinner.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </td>
               </tr>
             </tbody>
