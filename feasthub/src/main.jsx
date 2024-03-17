@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import {
+  Router,
   Route,
   RouterProvider,
   createBrowserRouter,
@@ -51,7 +52,10 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="login" element={<Login_Choice />} />
       <Route path="order" element={<Order />} />
-      <Route path="order/orderinfo" element={<Order3/>}/>
+      <Route>
+        <Route path="/orderinfo/:orderId" element={<Order3 />} />
+        {/* Other routes go here */}
+      </Route>
       <Route path="whyus" element={<WhyUs/>} />
       <Route path="buyer-login" element={<Buyer_Login />} />
       <Route path="buyer-signup" element={<Buyer_Signup />} />

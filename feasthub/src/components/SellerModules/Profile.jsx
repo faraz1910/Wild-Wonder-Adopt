@@ -16,6 +16,7 @@ const Profile = () => {
   const [newGst, setnewGst] = useState("");
   const [newPhone, setnewPhone] = useState(0);
   const [newAddress, setnewAddress] = useState("");
+  const [newPrice, setnewPrice] = useState("");
 
   const createSeller = async () => {
     await addDoc(businessNameCollectionRef, {
@@ -24,7 +25,8 @@ const Profile = () => {
       businessName: newBusinessName,
       gstNo: newGst,
       phone: newPhone,
-      address: newAddress
+      address: newAddress,
+      price: newPrice
     });
     alert("Seller added successfully!");
   }
@@ -124,7 +126,16 @@ const Profile = () => {
                 className="input input-bordered w-full"
                 onChange={(event) => {setnewAddress(event.target.value)}}
               />
-            </label>
+            </label> <br />
+            <label className="form-control w-full">
+            <span className="label-text">Set Price per day</span>
+                <input
+              type="text"
+              placeholder="Set price per day"
+              className="input input-bordered w-full"
+              onChange={(event) => {setnewPrice(event.target.value)}}
+            />
+               </label>
             <button onClick={createSeller} className="w-full bg-red-600 py-3 rounded-xl text-white font-bold mt-6">
               Submit
             </button>
