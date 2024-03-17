@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MealPlans = () => {
+const MealPlans = ({price}) => {
   return (
     <div className="flex flex-col mt-10">
               <h1 className="text-xl mb-2">Meal Plans</h1>
@@ -12,7 +12,7 @@ const MealPlans = () => {
                       href="#"
                       className="text-blue-500 font-bold hover:underline text-lg"
                     >
-                      Rs. 500
+                      Rs. {price*30}
                     </a>
                   </div>
 
@@ -24,7 +24,7 @@ const MealPlans = () => {
                 </div>
                 <div className="text-sm text-gray-700 flex flex-row">
                   <h1 className="font-bold">Include :</h1>&nbsp;
-                  <p>Lunch and Dinner</p>
+                  <p>Lunch and Dinner {"( 30 Tiffins )"}</p>
                 </div>
                 <div className="text-sm font-medium text-red-600">
                   Plans can be customize after placing the order by contacting
@@ -38,7 +38,7 @@ const MealPlans = () => {
                       href="#"
                       className="text-blue-500 font-bold hover:underline text-lg"
                     >
-                      Rs. 1500
+                      Rs. {price*60}
                     </a>
                   </div>
 
@@ -50,7 +50,7 @@ const MealPlans = () => {
                 </div>
                 <div className="text-sm text-gray-700 flex flex-row">
                   <h1 className="font-bold">Include :</h1>&nbsp;
-                  <p>Lunch and Dinner</p>
+                  <p>Lunch and Dinner {"( 60 Tiffins )"}</p>
                 </div>
                 <div className="text-sm font-medium text-red-600">
                   Plans can be customize after placing the order by contacting
@@ -64,7 +64,7 @@ const MealPlans = () => {
                       href="#"
                       className="text-blue-500 font-bold hover:underline text-lg"
                     >
-                      Rs. 3000
+                      Rs. {price*180}
                     </a>
                   </div>
 
@@ -76,7 +76,7 @@ const MealPlans = () => {
                 </div>
                 <div className="text-sm text-gray-700 flex flex-row">
                   <h1 className="font-bold">Include :</h1>&nbsp;
-                  <p>Lunch and Dinner</p>
+                  <p>Lunch and Dinner {"( 180 Tiffins )"}</p>
                 </div>
                 <div className="text-sm font-medium text-red-600">
                   Plans can be customize after placing the order by contacting

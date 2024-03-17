@@ -50,7 +50,7 @@ const Order3 = () => {
   <img
     src="/src/assets/orderImg.jpg"
     alt="Seller"
-    className="w-full h-full object-cover md:h-[30rem] "
+    className="w-full h-full object-cover md:h-[30rem] md:w-[40rem] "
   />
 </div>
 <div className="flex flex-col mt-4 mx-2 md:ml-10 ">
@@ -74,7 +74,7 @@ const Order3 = () => {
         Non - Vegetarian
       </span>
     </div>
-    <MealPlans />
+    <MealPlans price={orderData.price}/>
     <div className="flex flex-col md:flex-row mt-8">
       {/* <h1 className="text-md">Choose Your Plan :</h1> */}
 
