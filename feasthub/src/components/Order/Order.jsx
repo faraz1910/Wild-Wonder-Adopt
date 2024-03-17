@@ -70,7 +70,7 @@ const Order = () => {
                       Dinner
                     </span>
                     </div>
-                    <Link to="orderinfo">
+                    <Link to={`/orderinfo/${b.id}`}>
                   <button className="text-white bg-red-600 focus:ring-4 focus:ring-red-300 font-extrabold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none">View Info</button>
                   </Link>
                   </div>
