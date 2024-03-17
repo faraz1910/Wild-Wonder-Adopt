@@ -35,6 +35,7 @@ const Seller_Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        window.alert("Invalid credentials. Please try again.");
       });
   };
 

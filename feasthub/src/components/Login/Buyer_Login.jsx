@@ -18,26 +18,28 @@ const Buyer_Login = () => {
         setEmail('');
       }
     });
-
+  
     return () => {
       // Cleanup
       unsubscribe();
     };
   }, []); // Runs only on component mount
-
+  
   const buyer_login = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
         console.log("Logged in");
-        window.alert(email + " logged in");
+        alert(email + " logged in");
         navigate(`/order?email=${email}`); // Redirect to profile page with email parameter
       })
       .catch((error) => {
         console.log(error);
+        alert("Invalid credentials. Please try again.");
       });
   };
+  
 
     
     
