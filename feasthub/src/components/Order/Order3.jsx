@@ -58,7 +58,6 @@ const Order3 = () => {
     <div className="font-semibold ">
       <h1 className="text-3xl font-bold mb-2">{orderData.businessName}</h1>
       <><p className="text-xl mb-2">{orderData.fname } {orderData.lname}</p></>
-      
     </div>
     <p className="mb-1">{orderData.address}</p>
     <p>{orderData.phone}</p>
