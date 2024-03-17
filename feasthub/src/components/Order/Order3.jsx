@@ -57,7 +57,7 @@ const Order3 = () => {
 
       {/* Table */}
       <div className="w-full mt-7">
-        <MenuTable />
+        <MenuTable heading={'Menu'}/>
       </div>
     </>
   );

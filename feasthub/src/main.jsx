@@ -26,6 +26,7 @@ import Clients from "./components/SellerModules/Clients.jsx";
 import Contact from "./components/ContactUs/Contact.jsx";
 import Order2 from "./components/Order/order2.jsx";
 import Order3 from "./components/Order/Order3.jsx";
+import NewMenu from "./components/SellerModules/NewMenu.jsx";
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
@@ -60,7 +61,7 @@ const router = createBrowserRouter(
       <Route path="seller/" element={<SellerMain />} >
         <Route path="profile" element={<Profile/>}/>
         <Route path="services" element={<Services/>}/>
-        <Route path="menu" element={<Menu/>}/>
+        <Route path="menu" element={<NewMenu/>}/>
         <Route path="clients" element={<Clients/>}/>
       </Route>
       <Route path="*" element={<div>Page under maintainance !!!</div>} />

@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const MenuTable = () => {
+
+const MenuTable = ({heading}) => {
+
+
   return (
     <>
         <div className="p-5 h-full mb-20 bg-gray-100">
-            <h1 className="text-xl mb-2">Menu</h1>
+            <h1 className="text-xl mb-2">{heading}</h1>
 
             <div className="overflow-auto rounded-lg shadow">
               <table className="w-full">
