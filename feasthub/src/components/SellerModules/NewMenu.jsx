@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { secondaryAuth } from "../../firebaseSeller";
+import { db } from "../../firebaseSeller";
 import MenuTable from "../Order/MenuTable";
-import { db, secondaryAuth } from "../../firebaseSeller";
-import { collection, doc, updateDoc, arrayUnion, setDoc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, setDoc, arrayUnion } from "firebase/firestore";
 
 const NewMenu = () => {
   const [newDish, setNewDish] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
+  const [sellerEmail, setSellerEmail] = useState("");
+
+  useEffect(() => {
+    const user = secondaryAuth.currentUser;
+    const email = user ? user.email : null;
+    setSellerEmail(email);
+  }, []);
 
   // Function to handle form submission
   const handleAddItem = async (e) => {
     e.preventDefault();
-
-    // Get the current user's email (assuming it's used as the seller's identifier)
-    const user = secondaryAuth.currentUser;
-    const sellerEmail = user ? user.email : null;
 
     // Validate inputs
     if (!sellerEmail || !newDish || !selectedDay || !selectedTime) {
@@ -64,7 +68,7 @@ const NewMenu = () => {
           <hr className="mb-6" />
         </div>
         <div className="mb-6">
-          <MenuTable heading={"Current Menu"} />
+          <MenuTable heading={"Current Menu"} sellerEmail={sellerEmail} />
         </div>
         <div className="flex w-full justify-center">
           <div className="flex flex-col justify-center items-center">
@@ -127,4 +131,5 @@ const NewMenu = () => {
     </>
   );
 };
-  export default NewMenu;
+
+export default NewMenu;

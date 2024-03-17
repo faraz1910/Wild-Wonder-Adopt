@@ -31,6 +31,19 @@ const MenuTable = ({ heading }) => {
     }
   }, [sellerEmail]);
 
+  // Save menu item to local storage on component mount
+  useEffect(() => {
+    localStorage.setItem("menuItem", JSON.stringify(menuItem));
+  }, [menuItem]);
+
+  // Retrieve menu item from local storage on component mount
+  useEffect(() => {
+    const savedMenuItem = JSON.parse(localStorage.getItem("menuItem"));
+    if (savedMenuItem) {
+      setMenuItem(savedMenuItem);
+    }
+  }, []);
+
   return (
     <>
       <div className="p-5 h-full mb-20 bg-gray-100">
@@ -52,6 +65,7 @@ const MenuTable = ({ heading }) => {
               </tr>
             </thead>
             <tbody className="divide-y divide-x-2 divide-gray-100">
+              {/* Monday */}
               <tr className="bg-white">
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   <a
@@ -61,7 +75,7 @@ const MenuTable = ({ heading }) => {
                     Monday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   {menuItem.monday_lunch &&
                     menuItem.monday_lunch.map((item, index) => (
                       <p key={index}>{item}</p>
@@ -74,6 +88,7 @@ const MenuTable = ({ heading }) => {
                     ))}
                 </td>
               </tr>
+              {/* Tuesday */}
               <tr className="bg-gray-50">
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   <a
@@ -83,7 +98,7 @@ const MenuTable = ({ heading }) => {
                     Tuesday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   {menuItem.tuesday_lunch &&
                     menuItem.tuesday_lunch.map((item, index) => (
                       <p key={index}>{item}</p>
@@ -96,6 +111,7 @@ const MenuTable = ({ heading }) => {
                     ))}
                 </td>
               </tr>
+              {/* Wednesday */}
               <tr className="bg-white">
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   <a
@@ -105,7 +121,7 @@ const MenuTable = ({ heading }) => {
                     Wednesday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   {menuItem.wednesday_lunch &&
                     menuItem.wednesday_lunch.map((item, index) => (
                       <p key={index}>{item}</p>
@@ -118,6 +134,7 @@ const MenuTable = ({ heading }) => {
                     ))}
                 </td>
               </tr>
+              {/* Thursday */}
               <tr className="bg-gray-50">
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   <a
@@ -127,7 +144,7 @@ const MenuTable = ({ heading }) => {
                     Thursday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   {menuItem.thursday_lunch &&
                     menuItem.thursday_lunch.map((item, index) => (
                       <p key={index}>{item}</p>
@@ -140,6 +157,7 @@ const MenuTable = ({ heading }) => {
                     ))}
                 </td>
               </tr>
+              {/* Friday */}
               <tr className="bg-white">
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   <a
@@ -149,7 +167,7 @@ const MenuTable = ({ heading }) => {
                     Friday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   {menuItem.friday_lunch &&
                     menuItem.friday_lunch.map((item, index) => (
                       <p key={index}>{item}</p>
@@ -162,6 +180,7 @@ const MenuTable = ({ heading }) => {
                     ))}
                 </td>
               </tr>
+              {/* Saturday */}
               <tr className="bg-gray-50">
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   <a
@@ -171,7 +190,7 @@ const MenuTable = ({ heading }) => {
                     Saturday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   {menuItem.saturday_lunch &&
                     menuItem.saturday_lunch.map((item, index) => (
                       <p key={index}>{item}</p>
@@ -184,6 +203,7 @@ const MenuTable = ({ heading }) => {
                     ))}
                 </td>
               </tr>
+              {/* Sunday */}
               <tr className="bg-white">
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   <a
@@ -193,7 +213,7 @@ const MenuTable = ({ heading }) => {
                     Sunday
                   </a>
                 </td>
-                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   {menuItem.sunday_lunch &&
                     menuItem.sunday_lunch.map((item, index) => (
                       <p key={index}>{item}</p>
