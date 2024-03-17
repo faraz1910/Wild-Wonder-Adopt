@@ -57,10 +57,10 @@ const Order = () => {
                   <img src="src/assets/orderImg.jpg" alt="Seller" className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4">
-                  <h4 className="font-bold text-lg mb-2">{b.businessName}</h4>
-                  <h5 className="font-bold text-lg mb-2">{b.fname} {b.lname}</h5>
+                  <h3 className="font-bold text-lg mb-2">{b.businessName}</h3>
+                  <h6 className="font-bold text-lg mb-1">₹ {b.price}</h6>
+                  <h5 className="text-base">{b.fname} {b.lname} - {b.phone}</h5>
                   <p className="mb-4">{b.address}</p>
-                  <p className="mb-4">{b.phone}</p>
                   <div className="flex justify-between items-center">
                     <div>
                     <span className="px-2 py-1 bg-pink-300 text-sm rounded mr-2">
