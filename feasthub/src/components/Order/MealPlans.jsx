@@ -24,7 +24,7 @@ const MealPlans = ({price}) => {
                 </div>
                 <div className="text-sm text-gray-700 flex flex-row">
                   <h1 className="font-bold">Include :</h1>&nbsp;
-                  <p>Lunch and Dinner {"( 30 Tiffins )"}</p>
+                  <p>Lunch and Dinner <span className='font-bold'>{"( 30 Tiffins )"}</span></p>
                 </div>
                 <div className="text-sm font-medium text-red-600">
                   Plans can be customize after placing the order by contacting
@@ -50,7 +50,7 @@ const MealPlans = ({price}) => {
                 </div>
                 <div className="text-sm text-gray-700 flex flex-row">
                   <h1 className="font-bold">Include :</h1>&nbsp;
-                  <p>Lunch and Dinner {"( 60 Tiffins )"}</p>
+                  <p>Lunch and Dinner <span className='font-bold'>{"( 60 Tiffins )"}</span></p>
                 </div>
                 <div className="text-sm font-medium text-red-600">
                   Plans can be customize after placing the order by contacting
@@ -76,7 +76,7 @@ const MealPlans = ({price}) => {
                 </div>
                 <div className="text-sm text-gray-700 flex flex-row">
                   <h1 className="font-bold">Include :</h1>&nbsp;
-                  <p>Lunch and Dinner {"( 180 Tiffins )"}</p>
+                  <p>Lunch and Dinner <span className='font-bold'>{"( 180 Tiffins )"}</span></p>
                 </div>
                 <div className="text-sm font-medium text-red-600">
                   Plans can be customize after placing the order by contacting
