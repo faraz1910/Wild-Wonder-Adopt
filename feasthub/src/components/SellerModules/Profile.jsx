@@ -3,7 +3,6 @@ import { signOut } from 'firebase/auth';
 import { useLocation } from 'react-router-dom';
 import { db } from '../../firebaseSeller';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
-
 const Profile = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -17,6 +16,7 @@ const Profile = () => {
   const [newPhone, setnewPhone] = useState(0);
   const [newAddress, setnewAddress] = useState("");
   const [newPrice, setnewPrice] = useState("");
+  const [newEmail, setnewEmail] = useState("");
 
   const createSeller = async () => {
     await addDoc(businessNameCollectionRef, {
@@ -26,7 +26,8 @@ const Profile = () => {
       gstNo: newGst,
       phone: newPhone,
       address: newAddress,
-      price: newPrice
+      price: newPrice,
+      email: newEmail,
     });
     alert("Seller added successfully!");
   }
@@ -73,6 +74,22 @@ const Profile = () => {
           <div className="w-full px-3">
             <label className="form-control w-full">
               <div className="label">
+                <span className="label-text">Email Address</span>
+                <span className="label-text-al text-red-600 text-xl font-bold">
+                  *
+                </span>
+              </div>
+              <input
+                type="email"
+                value={userEmail}
+                className="input input-bordered w-full"
+                onChange={(event) => {setnewEmail(event.target.value)}}
+              />
+            </label>
+          </div>
+          <div className="w-full px-3">
+            <label className="form-control w-full">
+              <div className="label">
                 <span className="label-text">Business Name</span>
                 <span className="label-text-al text-red-600 text-xl font-bold">
                   *
@@ -85,6 +102,7 @@ const Profile = () => {
                 onChange={(event) => {setBusinessName(event.target.value)}}
               />
             </label>
+            
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">GST No.</span>
