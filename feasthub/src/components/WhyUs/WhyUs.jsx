@@ -4,15 +4,19 @@ import { Link } from 'react-router-dom';
 const features = [
   {
     title: 'Connect with multiple sellers',
-    description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis alias commodi incidunt magni neque officiis tempora, exercitationem cupiditate sapiente? Nihil.',
+    description: 'Streamline your shopping experience by effortlessly connecting with numerous sellers, unlocking a world of options tailored to your preferences and needs',
   },
   {
     title: 'Monthly Subscription plans',
-    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate ab odit quasi nesciunt molestias praesentium, ex aliquid modi a. Magnam?',
+    description: 'Enjoy hassle-free entertainment or services with our flexible monthly subscription plans, ensuring convenience and value every month.',
   },
   {
-    title: 'Various meal categories',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum velit laboriosam necessitatibus iste dolorum voluptates id, consectetur hic quae nam.',
+    title: 'Easy Payment Options',
+    description: 'Conveniently manage your payments with our user-friendly platform, offering seamless transactions for hassle-free shopping experiences',
+  },
+  {
+    title: 'Home cooked food made easy',
+    description: 'Delight in delicious, nutritious dishes prepared with love and care, ready to savor without the stress of cooking',
   },
 ];
 
@@ -26,7 +30,8 @@ const WhyUs = () => {
       <h3 className="text-2xl mb-2">   doorstep, making every meal a delightful part of your day!  </h3>
       <h3 className="text-2xl mb-2">A centralized solution, simplifying the process</h3>
       <h3 className="text-2xl mb-2"> of discovering and enjoying diverse culinary options near you.</h3>
-      <h3 className="text-2xl mb-2">  Lorem ipsum mollitia maiores enim neque.  </h3>
+      <h3 className="text-2xl mb-2">  Savor diverse cuisines and flavors without leaving the comfort of your home.
+</h3>
     </div>
   </div> 
 
@@ -39,7 +44,7 @@ const WhyUs = () => {
             Tired of visiting places for food?
           </p>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, facilis? Lorem ipsum dolor sit amet..
+          Savor diverse cuisines and flavors without leaving the comfort of your home.
           </p>
           
           {/* <h2 className="text-base text-red-600 font-semibold tracking-wide uppercase">Product Features</h2> */}

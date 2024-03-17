@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import { db } from "../../firebaseSeller";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 const Contact = () => {
-  const businessNameCollectionRef = collection(db, "ContactUs");
+  const contactCollectionRef = collection(db, "ContactUs");
   const [newName, setnewName] = useState("");
   const [newEmail, setnewEmail] = useState("");
   const [newMessage, setnewMessage] = useState("");
-  const contactUs = async () => {
-    await addDoc(businessNameCollectionRef, {
+  const createContact = async () => {
+    await addDoc(contactCollectionRef, {
       name: newName,
       email: newEmail,
       message: newMessage,
@@ -16,14 +16,9 @@ const Contact = () => {
     alert("Your message was sent successfully!");
   };
   return (
-    <div className="w-full">
-      <div class="flex grow h-full w-full ... ">
-        <div className="hidden md:visible">
-          <img
-            src="src/assets/contactUs.png"
-            className="h-96 pt-7.5 "
-            alt="contact us page image"
-          />
+    <div className="flex justify-center items-center h-screen">
+      <div class="w-full max-w-screen-lg md:flex justify-center ">
+        <div className="hidden md:block">
         </div>
         <div class="flex flex-col w-10/12 mt-10 justify-center items-center ">
           <label className="form-control w-full max-w-xs mx-3 ">
@@ -41,9 +36,7 @@ const Contact = () => {
               type="text"
               placeholder=""
               className="bg-stone-200 h-9"
-              onChange={(event) => {
-                setnewName(event.target.value);
-              }}
+              onChange={(event) => {setnewName(event.target.value)}}
             />
           </label>
           <label className="form-control w-full max-w-xs mx-3">
@@ -54,9 +47,7 @@ const Contact = () => {
               type="email"
               placeholder=""
               className="bg-stone-200 h-9"
-              onChange={(event) => {
-                setnewEmail(event.target.value);
-              }}
+              onChange={(event) => {setnewEmail(event.target.value)}}
             />
           </label>
           <label className="form-control w-full max-w-xs mx-3">
@@ -69,15 +60,13 @@ const Contact = () => {
               cols="30"
               rows="10"
               className="bg-stone-200"
-              onChange={(event) => {
-                setnewMessage(event.target.value);
-              }}
+              onChange={(event) => {setnewMessage(event.target.value)}}
             ></textarea>
           </label>
           <div className="w-1/2 mb-20 justify-center items-center">
             {" "}
             <button
-              onClick={contactUs}
+              onClick={createContact}
               className="w-full bg-red-600 py-3 rounded-xl text-white font-bold mt-6"
             >
               Send Message
