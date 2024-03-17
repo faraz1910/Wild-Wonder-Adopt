@@ -22,12 +22,6 @@ const MenuTable = ({ heading }) => {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   onSnapshot(doc(db, "SellerMenu", "XwGcxBnNzCDkaTRStDpf"), (doc) => {
-  //     // console.log("Current data: ", doc.data());
-  //     setMenuItem(doc.data());
-  //   });
-  // });
 
   console.log(menuItem.friday_dinner);
 
