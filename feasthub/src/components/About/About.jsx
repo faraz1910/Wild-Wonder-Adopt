@@ -39,8 +39,8 @@ const AboutUsPage = () => {
       </div>
       <div className="bg-gray-200 p-8 rounded-md text-center ">
         <p className="text-gray-600">
-          Email: support@yourcompany.com <br />
-          Phone: +91-XXXXXXXXXX (General inquiries) <br />
+          Email: feastHub@gmail.com <br />
+          Phone: +91-73781171 (General inquiries) <br />
           Business Hours: Monday to Friday: 9:00 AM - 6:00 PM IST <br />
           Visit Us: FeastHub, Kotri Kalan, Ashta, Near, Indore Road, Bhopal, Madhya Pradesh 466114
         </p>
