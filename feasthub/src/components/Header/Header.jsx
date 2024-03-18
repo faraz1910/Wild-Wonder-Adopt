@@ -120,7 +120,6 @@ const Header = () => {
                 Logged in as: {sellerEmail}
               </span> */}
               <button
-                onClick={handleLogout}
                 className=""
               >
                 <div className="dropdown dropdown-hover ">
@@ -129,13 +128,13 @@ const Header = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                    className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52"
                   >
                     <li>
-                      <NavLink><a>Dashboard</a></NavLink>
+                      <NavLink to="seller"><a>Dashboard</a></NavLink>
                     </li>
                     <li>
-                      <NavLink>Logout</NavLink>
+                      <NavLink onClick={handleLogout}>Logout</NavLink>
                     </li>
                   </ul>
                 </div>
@@ -144,15 +143,29 @@ const Header = () => {
           ) : BuyerEmail ? (
             <div className="flex items-center">
               <span className="text-gray-700 mr-4 font-medium">
-                Logged in as: {BuyerEmail}
+                
               </span>
               <Link to="/">
-                <button
-                  onClick={handleLogoutBuyer}
-                  className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-                >
-                  Logout
-                </button>
+              <button
+                className=""
+              >
+                <div className="dropdown dropdown-hover ">
+                  <div tabIndex={0} role="button" className="btn">
+                  {BuyerEmail}
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52"
+                  >
+                    <li>
+                      <NavLink to="buyer"><a>Dashboard</a></NavLink>
+                    </li>
+                    <li>
+                      <NavLink onClick={handleLogoutBuyer}>Logout</NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </button>
               </Link>
             </div>
           ) : (

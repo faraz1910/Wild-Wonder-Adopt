@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {secondaryAuth} from "../../firebaseSeller";
+import { Link } from 'react-router-dom';
 
 const Seller_Signup = () => {
   const [email, setEmail] = useState('');
