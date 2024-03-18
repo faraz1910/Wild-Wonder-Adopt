@@ -45,7 +45,7 @@ const Order3 = () => {
 
   return (
     <>
-      {businessAddress && <h1>{businessAddress}</h1>}
+      {/* {businessAddress && <h1>{businessAddress}</h1>} */}
       {orderData && (
         <div>
           {/* Render other order details */}

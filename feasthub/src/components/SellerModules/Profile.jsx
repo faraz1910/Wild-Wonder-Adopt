@@ -35,10 +35,6 @@ const Profile = () => {
   return (
     <>
       <div className='center'>
-        <div className='profile'>
-          <h1>Profile</h1>
-          <span onClick={() => signOut(auth)}>Sign Out</span>
-        </div>
       </div>
       <div className="w-full h-screen flex justify-center items-center bg-white">
         <div className="h-auto flex flex-col justify-center items-center bg-slate-200 rounded-2xl px-6 py-6">

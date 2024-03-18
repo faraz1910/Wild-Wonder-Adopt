@@ -28,6 +28,9 @@ import Contact from "./components/ContactUs/Contact.jsx";
 import Order2 from "./components/Order/order2.jsx";
 import Order3 from "./components/Order/Order3.jsx";
 import NewMenu from "./components/SellerModules/NewMenu.jsx";
+import BuyerMain from "./components/buyer_dashboard/BuyerMain.jsx";
+import BuyerOrder from "./components/buyer_dashboard/BuyerOrder.jsx";
+import SellerOrders from "./components/SellerModules/SellerOrders.jsx";
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
@@ -66,7 +69,10 @@ const router = createBrowserRouter(
         <Route path="profile" element={<Profile/>}/>
         <Route path="services" element={<Services/>}/>
         <Route path="menu" element={<NewMenu/>}/>
-        <Route path="clients" element={<Clients/>}/>
+        <Route path="orders" element={<SellerOrders />}/>
+      </Route>
+      <Route path="buyer/" element={<BuyerMain />} >
+        <Route path="orders" element={<BuyerOrder/>}/>
       </Route>
       <Route path="*" element={<div>Page under maintainance !!!</div>} />
     </Route>
