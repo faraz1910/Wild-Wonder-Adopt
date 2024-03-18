@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { signOut } from 'firebase/auth';
 import { useLocation } from 'react-router-dom';
 import { db } from '../../firebaseSeller';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, getDoc, setDoc } from 'firebase/firestore';
 
 const Profile = () => {
   const location = useLocation();
@@ -10,31 +10,66 @@ const Profile = () => {
   const userEmail = queryParams.get('email');
 
   const businessNameCollectionRef = collection(db, "SellerInfo");
-  const [newFirstName, setnewFirstName] = useState("");
-  const [newLasttName, setnewLasttName] = useState("");
-  const [newBusinessName, setBusinessName] = useState("");
-  const [newGst, setnewGst] = useState("");
-  const [newPhone, setnewPhone] = useState(0);
-  const [newAddress, setnewAddress] = useState("");
-  const [newPrice, setnewPrice] = useState("");
+  const [sellerData, setSellerData] = useState({
+    fname: "",
+    lname: "",
+    businessName: "",
+    gstNo: "",
+    phone: "",
+    address: "",
+    price: "",
+  });
+
+  // Fetch seller data if it exists
+  useEffect(() => {
+    const fetchSellerInfo = async () => {
+      try {
+        const sellerRef = doc(db, "SellerInfo", userEmail);
+        const sellerSnapshot = await getDoc(sellerRef);
+        if (sellerSnapshot.exists()) {
+          const sellerData = sellerSnapshot.data();
+          console.log("Seller data:", sellerData);
+          setSellerData(sellerData);
+        }
+      } catch (error) {
+        console.error('Error fetching seller info:', error);
+      }
+    };
+
+    if (userEmail) {
+      fetchSellerInfo();
+    }
+  }, [userEmail]);
 
   const createSeller = async () => {
-    await addDoc(businessNameCollectionRef, {
-      fname: newFirstName,
-      lname: newLasttName,
-      businessName: newBusinessName,
-      gstNo: newGst,
-      phone: newPhone,
-      address: newAddress,
-      price: newPrice,
-      email: userEmail, // Use userEmail obtained from URL parameters
-    });
-    alert("Seller added successfully!");
+    try {
+      await setDoc(doc(db, "SellerInfo", userEmail), {
+        fname: sellerData.fname,
+        lname: sellerData.lname,
+        businessName: sellerData.businessName,
+        gstNo: sellerData.gstNo,
+        phone: sellerData.phone,
+        address: sellerData.address,
+        price: sellerData.price,
+      });
+      alert("Seller information updated successfully!");
+    } catch (error) {
+      console.error('Error updating seller info:', error);
+    }
+  }
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setSellerData({ ...sellerData, [name]: value });
   }
 
   return (
     <>
       <div className='center'>
+        <div className='profile'>
+          <h1>Profile</h1>
+          <span onClick={() => signOut(auth)}>Sign Out</span>
+        </div>
       </div>
       <div className="w-full h-screen flex justify-center items-center bg-white">
         <div className="h-auto flex flex-col justify-center items-center bg-slate-200 rounded-2xl px-6 py-6">
@@ -48,7 +83,9 @@ const Profile = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full max-w-xs"
-                onChange={(event) => {setnewFirstName(event.target.value)}}
+                name="fname"
+                value={sellerData.fname}
+                onChange={handleInputChange}
               />
             </label>
             <label className="form-control w-full max-w-xs mx-3">
@@ -60,7 +97,9 @@ const Profile = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full max-w-xs"
-                onChange={(event) => {setnewLasttName(event.target.value)}}
+                name="lname"
+                value={sellerData.lname}
+                onChange={handleInputChange}
               />
             </label>
           </div>
@@ -74,7 +113,7 @@ const Profile = () => {
                 type="email"
                 value={userEmail}
                 className="input input-bordered w-full"
-                onChange={(event) => {setnewEmail(event.target.value)}}
+                readOnly
               />
             </label>
           </div>
@@ -88,7 +127,9 @@ const Profile = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full"
-                onChange={(event) => {setBusinessName(event.target.value)}}
+                name="businessName"
+                value={sellerData.businessName}
+                onChange={handleInputChange}
               />
             </label>
             <label className="form-control w-full">
@@ -100,7 +141,9 @@ const Profile = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full"
-                onChange={(event) => {setnewGst(event.target.value)}}
+                name="gstNo"
+                value={sellerData.gstNo}
+                onChange={handleInputChange}
               />
             </label>
             <label className="form-control w-full">
@@ -112,7 +155,9 @@ const Profile = () => {
                 type="number"
                 placeholder=""
                 className="input input-bordered w-full"
-                onChange={(event) => {setnewPhone(event.target.value)}}
+                name="phone"
+                value={sellerData.phone}
+                onChange={handleInputChange}
               />
             </label>
             <label className="form-control w-full">
@@ -124,7 +169,9 @@ const Profile = () => {
                 type="text"
                 placeholder=""
                 className="input input-bordered w-full"
-                onChange={(event) => {setnewAddress(event.target.value)}}
+                name="address"
+                value={sellerData.address}
+                onChange={handleInputChange}
               />
             </label>
             <label className="form-control w-full">
@@ -133,7 +180,9 @@ const Profile = () => {
                 type="text"
                 placeholder="Set price per day"
                 className="input input-bordered w-full"
-                onChange={(event) => {setnewPrice(event.target.value)}}
+                name="price"
+                value={sellerData.price}
+                onChange={handleInputChange}
               />
             </label>
             <button onClick={createSeller} className="w-full bg-red-600 py-3 rounded-xl text-white font-bold mt-6">
