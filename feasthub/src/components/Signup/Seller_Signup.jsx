@@ -155,7 +155,7 @@ const Seller_Signup = () => {
         </div>
         <div>
           <Link to="/seller">
-          <button type="submit" class="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Sign Up</button></Link>
+          <button onClick={seller_signUp} type="submit" class="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Sign Up</button></Link>
         </div>
       </form>
       <div class="mt-4 text-sm text-gray-600 text-center">
