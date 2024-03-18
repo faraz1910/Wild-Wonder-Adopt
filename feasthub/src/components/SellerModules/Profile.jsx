@@ -17,6 +17,7 @@ const Profile = () => {
       phone: "",
       address: "",
       price: "",
+      type: "",
     };
   });
 
@@ -42,6 +43,7 @@ const Profile = () => {
               phone: "",
               address: "",
               price: "",
+              type: "",
             });
           }
         }
@@ -64,6 +66,7 @@ const Profile = () => {
         address: sellerData.address,
         price: sellerData.price,
         email: userEmail,
+        type: sellerData.type,
       });
       localStorage.setItem("sellerData", JSON.stringify(sellerData));
       alert("Seller information updated successfully!");
@@ -76,10 +79,11 @@ const Profile = () => {
     const { name, value } = event.target;
     setSellerData(prevData => ({ ...prevData, [name]: value }));
   }
+  
 
   return (
     <>
-      <div className="w-full h-screen flex justify-center items-center bg-white">
+      <div className="w-full flex justify-center items-center bg-white">
         <div className="h-auto flex flex-col justify-center items-center bg-slate-200 rounded-2xl px-6 py-6">
           <div className="flex">
             <label className="form-control w-full max-w-xs mx-3">
@@ -193,6 +197,26 @@ const Profile = () => {
                 onChange={handleInputChange}
               />
             </label>
+
+
+            <label className="form-control w-full">
+              <div className="label">
+                <span className="label-text">Set Meal Type</span>
+                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
+              </div>
+              <select
+                className="p-2 border rounded-lg mx-3 shadow-md"
+                value={sellerData.type}
+                onChange={handleInputChange}
+                name="type"
+              >
+                <option value="">Choose Meal Type</option>
+                <option value="veg">Veg</option>
+                <option value="non-veg">Non-Veg</option>
+                <option value="veg and non-veg">Veg & Non-Veg</option>
+              </select>
+            </label>
+
             <button onClick={createSeller} className="w-full bg-red-600 py-3 rounded-xl text-white font-bold mt-6">
               Submit
             </button>
