@@ -1,4 +1,3 @@
-// Profile.js
 import React, { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import { db } from '../../firebaseSeller';
@@ -8,7 +7,6 @@ const Profile = () => {
   const queryParams = new URLSearchParams(window.location.search);
   const userEmail = queryParams.get('email');
 
-  const businessNameCollectionRef = collection(db, "SellerInfo");
   const [sellerData, setSellerData] = useState(() => {
     const storedData = localStorage.getItem("sellerData");
     return storedData ? JSON.parse(storedData) : {
@@ -25,22 +23,34 @@ const Profile = () => {
   useEffect(() => {
     const fetchSellerInfo = async () => {
       try {
-        const sellerRef = doc(db, "SellerInfo", userEmail);
-        const sellerSnapshot = await getDoc(sellerRef);
-        if (sellerSnapshot.exists()) {
-          const sellerData = sellerSnapshot.data();
-          console.log("Seller data:", sellerData);
-          setSellerData(sellerData);
-          localStorage.setItem("sellerData", JSON.stringify(sellerData));
+        if (userEmail) {
+          const sellerRef = doc(db, "SellerInfo", userEmail);
+          const sellerSnapshot = await getDoc(sellerRef);
+          if (sellerSnapshot.exists()) {
+            const sellerData = sellerSnapshot.data();
+            console.log("Seller data:", sellerData);
+            setSellerData(sellerData);
+            localStorage.setItem("sellerData", JSON.stringify(sellerData));
+          } else {
+            // If the user doesn't exist in Firebase, clear local storage and set fields to empty
+            localStorage.removeItem("sellerData");
+            setSellerData({
+              fname: "",
+              lname: "",
+              businessName: "",
+              gstNo: "",
+              phone: "",
+              address: "",
+              price: "",
+            });
+          }
         }
       } catch (error) {
         console.error('Error fetching seller info:', error);
       }
     };
 
-    if (userEmail) {
-      fetchSellerInfo();
-    }
+    fetchSellerInfo();
   }, [userEmail]);
 
   const createSeller = async () => {
