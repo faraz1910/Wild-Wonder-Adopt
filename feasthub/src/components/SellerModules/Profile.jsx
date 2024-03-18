@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { signOut } from 'firebase/auth';
 import { useLocation } from 'react-router-dom';
 import { db } from '../../firebaseSeller';
-import { collection, addDoc, doc, getDoc, setDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, setDoc } from 'firebase/firestore';
 
 const Profile = () => {
   const location = useLocation();
@@ -51,6 +51,7 @@ const Profile = () => {
         phone: sellerData.phone,
         address: sellerData.address,
         price: sellerData.price,
+        email: userEmail, // Include the email in the document data
       });
       alert("Seller information updated successfully!");
     } catch (error) {
