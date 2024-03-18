@@ -1,44 +1,56 @@
 import React, { useState, useEffect } from "react";
-import { signOut } from 'firebase/auth';
 import { useLocation } from 'react-router-dom';
 import { db } from '../../firebaseSeller';
 import { collection, doc, getDoc, setDoc } from 'firebase/firestore';
 
 const Profile = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
+  const queryParams = new URLSearchParams(window.location.search);
   const userEmail = queryParams.get('email');
 
-  const businessNameCollectionRef = collection(db, "SellerInfo");
-  const [sellerData, setSellerData] = useState({
-    fname: "",
-    lname: "",
-    businessName: "",
-    gstNo: "",
-    phone: "",
-    address: "",
-    price: "",
+  const [sellerData, setSellerData] = useState(() => {
+    const storedData = localStorage.getItem("sellerData");
+    return storedData ? JSON.parse(storedData) : {
+      fname: "",
+      lname: "",
+      businessName: "",
+      gstNo: "",
+      phone: "",
+      address: "",
+      price: "",
+    };
   });
 
-  // Fetch seller data if it exists
   useEffect(() => {
     const fetchSellerInfo = async () => {
       try {
-        const sellerRef = doc(db, "SellerInfo", userEmail); // Use userEmail here
-        const sellerSnapshot = await getDoc(sellerRef);
-        if (sellerSnapshot.exists()) {
-          const sellerData = sellerSnapshot.data();
-          console.log("Seller data:", sellerData);
-          setSellerData(sellerData);
+        if (userEmail) {
+          const sellerRef = doc(db, "SellerInfo", userEmail);
+          const sellerSnapshot = await getDoc(sellerRef);
+          if (sellerSnapshot.exists()) {
+            const sellerData = sellerSnapshot.data();
+            console.log("Seller data:", sellerData);
+            setSellerData(sellerData);
+            localStorage.setItem("sellerData", JSON.stringify(sellerData));
+          } else {
+            // If the user doesn't exist in Firebase, clear local storage and set fields to empty
+            localStorage.removeItem("sellerData");
+            setSellerData({
+              fname: "",
+              lname: "",
+              businessName: "",
+              gstNo: "",
+              phone: "",
+              address: "",
+              price: "",
+            });
+          }
         }
       } catch (error) {
         console.error('Error fetching seller info:', error);
       }
     };
 
-    if (userEmail) {
-      fetchSellerInfo();
-    }
+    fetchSellerInfo();
   }, [userEmail]);
 
   const createSeller = async () => {
@@ -51,7 +63,9 @@ const Profile = () => {
         phone: sellerData.phone,
         address: sellerData.address,
         price: sellerData.price,
+        email: userEmail,
       });
+      localStorage.setItem("sellerData", JSON.stringify(sellerData));
       alert("Seller information updated successfully!");
     } catch (error) {
       console.error('Error updating seller info:', error);
@@ -60,7 +74,7 @@ const Profile = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setSellerData({ ...sellerData, [name]: value });
+    setSellerData(prevData => ({ ...prevData, [name]: value }));
   }
 
   return (
@@ -105,7 +119,7 @@ const Profile = () => {
               </div>
               <input
                 type="email"
-                value={userEmail}
+                value={userEmail || ''}
                 className="input input-bordered w-full"
                 readOnly
               />
