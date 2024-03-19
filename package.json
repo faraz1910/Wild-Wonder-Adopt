@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "firebase": "^10.7.2",
+    "razorpay": "^2.9.2",
     "react-slick": "^0.29.0",
+    "request": "^2.88.2",
     "slick-carousel": "^1.8.1"
   }
 }
