@@ -111,20 +111,6 @@ const NewMenu = () => {
                 Add Item
               </button>
             </form>
-            <form action="">
-              <label className="mx-3"> Set Per Tiffin Price : &nbsp;</label>
-              <input
-                className="p-2 mx-3 shadow-md"
-                type="text"
-                placeholder="Set Price"
-              />
-              <button
-                className="px-6 py-2 bg-green-600 font-bold text-white rounded-lg mx-3"
-                type="submit"
-              >
-                Update Price
-              </button>
-            </form>
           </div>
         </div>
       </div>
