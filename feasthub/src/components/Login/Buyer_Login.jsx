@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {auth} from "../../firebase";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Buyer_Login = () => {
   const [email, setEmail] = useState(''); // Initialize with empty string
@@ -174,7 +175,7 @@ const Buyer_Login = () => {
         </div>
       </form>
       <div class="mt-4 text-sm text-gray-600 text-center">
-        <p>Don't have an account ? <a href="#" class="text-black hover:underline">Create account</a>
+        <p>Don't have an account ? <Link to="/buyer-signup"><a href="#" class="text-black hover:underline">Create account</a></Link>
         </p>
       </div>
     </div>

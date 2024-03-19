@@ -135,7 +135,7 @@ const Buyer_Signup = () => {
         </div>
       </form>
       <div class="mt-4 text-sm text-gray-600 text-center">
-        <p>Already have an account? <a href="#" class="text-black hover:underline">Login here</a>
+        <p>Already have an account? <Link to="/buyer-login"><a href="#" class="text-black hover:underline">Login here</a></Link>
         </p>
       </div>
     </div>
