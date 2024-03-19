@@ -134,6 +134,9 @@ const Order3 = () => {
                 <div className="font-semibold ">
                   <h1 className="text-3xl font-bold mb-2">{orderData.businessName}</h1>
                   <p className="text-xl mb-2">{orderData.fname} {orderData.lname}</p>
+                  <span className="px-2 py-1 bg-stone-800 text-sm rounded mr-2 bg-opacity-50 text-slate-100 font-bold">
+                  {orderData.type}
+                  </span>
                 </div>
                 <p className="mb-1">{orderData.address}</p>
                 <p>{orderData.phone}</p>
@@ -142,12 +145,6 @@ const Order3 = () => {
                   Enjoy the convenience of our tiffin service! Our menu features a variety of wholesome, home-cooked dishes made with fresh ingredients. Whether you prefer classic flavors or adventurous cuisines, we've got you covered. Say goodbye to meal prep stress and hello to tasty, convenient, and nutritious meals with our tiffin service!
                 </p>
                 <div className="mt-4">
-                  <span className="px-2 py-1 bg-green-300 text-sm rounded mr-2 bg-opacity-50 text-green-800 font-bold">
-                    Vegetarian
-                  </span>
-                  <span className="px-2 py-1 bg-red-400 text-sm rounded mr-2 bg-opacity-50 text-red-800 font-bold">
-                    Non - Vegetarian
-                  </span>
                 </div>
                 <MealPlans price={orderData.price}/>
                 <div className="flex flex-col md:flex-row mt-8">

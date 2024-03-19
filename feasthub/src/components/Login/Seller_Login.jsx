@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { secondaryAuth } from "../../firebaseSeller";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Seller_Login = () => {
   const [email, setEmail] = useState(''); // Initialize with empty string
@@ -45,7 +46,7 @@ const Seller_Login = () => {
     
         {/* <!-- component --> */}
         {/* Navbar */}
-      <nav>
+      {/* <nav>
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
@@ -61,7 +62,7 @@ const Seller_Login = () => {
             </li>
           )}
         </ul>
-      </nav>
+          </nav> */}
         
 <div class="flex h-screen">
   
@@ -193,7 +194,7 @@ const Seller_Login = () => {
         </div>
       </form>
       <div class="mt-4 text-sm text-gray-600 text-center">
-        <p>Don't have an account ? <a href="#" class="text-black hover:underline">Create account</a>
+        <p>Don't have an account ? <Link to="/seller-signup"><a href="#" class="text-black hover:underline">Create account</a></Link>
         </p>
       </div>
     </div>
