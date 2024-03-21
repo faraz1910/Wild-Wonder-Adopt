@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../../firebaseSeller";
 import MenuTable from "./MenuTable";
 import MealPlans from "./MealPlans";
-import { doc, getDoc, getDocs } from 'firebase/firestore';
+import { doc, getDoc, getDocs } from "firebase/firestore";
 
 const Order3 = () => {
   const { orderId } = useParams();
@@ -36,12 +36,39 @@ const Order3 = () => {
           console.log("No such order exists!");
         }
       } catch (error) {
-        console.error('Error fetching order details:', error);
+        console.error("Error fetching order details:", error);
       }
     };
 
     fetchOrderData();
   }, [orderId]);
+
+  const mealType = () => {
+    if (orderData.type === "veg") {
+      return (
+        <span className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50">
+          Vegetarian
+        </span>
+      );
+    } else if (orderData.type === "non-veg") {
+      return (
+        <span className="p-1.5 text-xs font-medium uppercase tracking-wider text-red-800 bg-red-200 rounded-lg bg-opacity-50">
+          Non-Vegeterian
+        </span>
+      );
+    } else {
+      return (
+        <>
+          <span className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50">
+            Vegetarian
+          </span>{" "}
+          <span className="p-1.5 text-xs font-medium uppercase tracking-wider text-red-800 bg-red-200 rounded-lg bg-opacity-50">
+            Non-Vegeterian
+          </span>
+        </>
+      );
+    }
+  };
 
   return (
     <>
@@ -60,27 +87,45 @@ const Order3 = () => {
             <div className="flex flex-col mt-4 mx-2 md:ml-10 ">
               <div className="flex flex-col">
                 <div className="font-semibold ">
-                  <h1 className="text-3xl font-bold mb-2">{orderData.businessName}</h1>
-                  <p className="text-xl mb-2">{orderData.fname} {orderData.lname}</p>
-                  <span className="px-2 py-1 bg-stone-800 text-sm rounded mr-2 bg-opacity-50 text-slate-100 font-bold">
+                  <h1 className="text-3xl font-bold mb-2">
+                    {orderData.businessName}
+                  </h1>
+                  <p className="text-xl mb-2">
+                    {orderData.fname} {orderData.lname}
+                  </p>
+                  {/* <span className="px-2 py-1 bg-stone-800 text-sm rounded mr-2 bg-opacity-50 text-slate-100 font-bold">
                   {orderData.type}
-                  </span>
+                  </span> */}
+
+                  {mealType()}
                 </div>
-                <p className="mb-1">{orderData.address}</p>
+                <p className="mb-1 mt-2">{orderData.address}</p>
                 <p>{orderData.phone}</p>
                 <hr className="my-4" />
                 <p>
-                  Enjoy the convenience of our tiffin service! Our menu features a variety of wholesome, home-cooked dishes made with fresh ingredients. Whether you prefer classic flavors or adventurous cuisines, we've got you covered. Say goodbye to meal prep stress and hello to tasty, convenient, and nutritious meals with our tiffin service!
+                  Enjoy the convenience of our tiffin service! Our menu features
+                  a variety of wholesome, home-cooked dishes made with fresh
+                  ingredients. Whether you prefer classic flavors or adventurous
+                  cuisines, we've got you covered. Say goodbye to meal prep
+                  stress and hello to tasty, convenient, and nutritious meals
+                  with our tiffin service!
                 </p>
-                <div className="mt-4">
-                </div>
-                <MealPlans price={orderData.price}/>
+                <div className="mt-4"></div>
+                <MealPlans price={orderData.price} />
                 <div className="flex flex-col md:flex-row mt-8">
                   <select className=" p-2 border rounded-lg">
-                    <option className="" value="choose">Choose Your Plan</option>
-                    <option className="" value="option1">15 days</option>
-                    <option className="" value="option2">1 month</option>
-                    <option className="" value="option3">3 months</option>
+                    <option className="" value="choose">
+                      Choose Your Plan
+                    </option>
+                    <option className="" value="option1">
+                      15 days
+                    </option>
+                    <option className="" value="option2">
+                      1 month
+                    </option>
+                    <option className="" value="option3">
+                      3 months
+                    </option>
                   </select>
                   <button className="bg-red-600 px-4 py-2 text-white  rounded-xl md:ml-8 w-auto mt-4 md:mt-0">
                     Proceed To Pay
@@ -92,7 +137,7 @@ const Order3 = () => {
 
           {/* Menu Table */}
           <div className="w-full mt-7">
-            <MenuTable heading={'Menu'} sellerEmail={orderData.email} />
+            <MenuTable heading={"Menu"} sellerEmail={orderData.email} />
           </div>
         </div>
       )}

@@ -1,6 +1,39 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import { secondaryAuth } from "../../firebaseSeller";
+import { db } from "../../firebaseSeller";
+import { doc, getDoc, updateDoc, setDoc, arrayUnion, onSnapshot } from "firebase/firestore";
 
 const SellerOrders = () => {
+
+  const [orderInfo, setOrderInfo] = useState({});
+  const [sellerEmail, setSellerEmail] = useState("");
+
+  useEffect(() => {
+    const user = secondaryAuth.currentUser;
+    const email = user ? user.email : null;
+    setSellerEmail(email);
+  }, []);
+  
+  useEffect(() => {
+    if (sellerEmail) {
+      const fetchData = async () => {
+        const docRef = doc(db, "OrderInfo", sellerEmail);
+        const unsubscribe = onSnapshot(docRef, (doc) => {
+          if (doc.exists()) {
+            setOrderInfo(doc.data());
+            console.log(orderInfo);
+          } else {
+            // Handle the case where the document doesn't exist or is empty
+            console.log("No data available");
+          }
+        });
+        return () => unsubscribe();
+      };
+
+      fetchData();
+    }
+  }, [sellerEmail]);
+
   return (
     <>
       <div className="p-5 h-full mb-20 bg-gray-100">
@@ -44,7 +77,7 @@ const SellerOrders = () => {
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                  Ashta Tiffin
+                  Ashta Tiffins
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   1 Month
