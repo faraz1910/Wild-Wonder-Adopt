@@ -131,7 +131,7 @@ const Header = () => {
                     className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52"
                   >
                     <li>
-                      <NavLink to="seller"><a>Dashboard</a></NavLink>
+                      <NavLink to="/seller/menu"><a>Dashboard</a></NavLink>
                     </li>
                     <li>
                       <NavLink onClick={handleLogout}>Logout</NavLink>
@@ -158,7 +158,7 @@ const Header = () => {
                     className="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52"
                   >
                     <li>
-                      <NavLink to="buyer"><a>Dashboard</a></NavLink>
+                      <NavLink to="buyer/orders"><a>Dashboard</a></NavLink>
                     </li>
                     <li>
                       <NavLink onClick={handleLogoutBuyer}>Logout</NavLink>
