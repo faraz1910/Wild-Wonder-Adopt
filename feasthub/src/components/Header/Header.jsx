@@ -82,8 +82,9 @@ const Header = () => {
             className="cursor-pointer flex items-center font-[Poppins] 
       text-gray-800"
           >
-            <Link to="/" className="text-3xl text-indigo-600 mr-1 pt-2">
-              <img src={logo} alt="Logo" className="h-10" />
+            <Link to="/" className="text-3xl text-green-600 font-sans font-bold mr-1 pt-2">
+              {/* <img src={logo} alt="Logo" className="h-10" /> */}
+              Wild Wonder Adopt
             </Link>
           </div>
 
@@ -104,8 +105,8 @@ const Header = () => {
                   to={d.link}
                   className={({ isActive }) =>
                     `block py-2 pr-4 pl-3 duration-200 ${
-                      isActive ? "text-red-600" : "text-gray-500"
-                    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-red-700 lg:p-0 lg:mx-4 sm:m-0.5 md:m-0.5 md:text-base text-lg lg:font-semibold`
+                      isActive ? "text-green-600" : "text-gray-500"
+                    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-green-700 lg:p-0 lg:mx-4 sm:m-0.5 md:m-0.5 md:text-base text-lg lg:font-semibold`
                   }
                   onClick={() => setOpen(!open)}
                 >
@@ -171,7 +172,7 @@ const Header = () => {
           ) : (
             <Link
               to="login"
-              className="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none absolute top-6 right-16 md:static"
+              className="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none absolute top-6 right-16 md:static"
             >
               Log In / Register
             </Link>

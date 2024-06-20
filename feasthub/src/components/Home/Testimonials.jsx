@@ -12,7 +12,7 @@ const Testimonials = () => {
                 key={d.name}
                 className="bg-white h-[450px] text-black rounded-box flex flex-col max-w-25"
               >
-               <div className="h-56 bg-red-600 flex justify-center items-center rounded-t-xl">
+               <div className="h-56 bg-green-600 flex justify-center items-center rounded-t-xl">
                   <img src={d.img} alt="" className="h-44 w-44 rounded-full" />
                 </div>  
                 <div className="flex flex-col items-center justify-center gap-4 p-4">

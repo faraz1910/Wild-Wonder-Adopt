@@ -11,7 +11,7 @@ export default {
       },
       backgroundImage: {
         homeimg1:
-          "linear-gradient(to bottom, rgba(0.2,0.2,0.1,0.6), rgba(0.2,0.1,0,0.6), rgba(0.2,0.2,0,0.6), transparent) ,url('/src/assets/homeimg1.jpg')",
+          "linear-gradient(to bottom, rgba(0.2,0.2,0.1,0.6), rgba(0.2,0.1,0,0.6), rgba(0.2,0.2,0,0.6), transparent) ,url('/src/assets/whitetiger.jpg')",
       },
     },
   },
