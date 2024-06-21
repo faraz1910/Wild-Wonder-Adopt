@@ -61,9 +61,9 @@ const NewMenu = () => {
       <div className="w-full h-full">
         <div className="w-full text-center">
           <h1 className="font-bold text-4xl py-4 uppercase ">
-            MENU
+            ADOPTION
             <br />
-            <span className="text-red-600 text-3xl">Management</span>
+            <span className="text-green-600 text-3xl">Price List</span>
           </h1>
           <hr className="mb-6" />
         </div>
@@ -105,7 +105,7 @@ const NewMenu = () => {
                 <option value="dinner">Dinner</option>
               </select>
               <button
-                className="px-6 py-2 bg-red-600 font-bold text-white rounded-lg mx-3"
+                className="px-6 py-2 bg-green-600 font-bold text-white rounded-lg mx-3"
                 type="submit"
               >
                 Add Item

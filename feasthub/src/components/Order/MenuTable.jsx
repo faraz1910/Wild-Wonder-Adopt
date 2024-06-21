@@ -27,20 +27,26 @@ const MenuTable = ({ heading, sellerEmail }) => {
   return (
     <>
       <div className="p-5 h-full mb-20 bg-gray-100">
-        <h1 className="text-xl mb-2">{heading}</h1>
+        <h1 className="text-xl mb-2">Adoption Prices</h1>
 
         <div className="overflow-auto rounded-lg shadow">
           <table className="w-full">
             <thead className="bg-gray-50 border-b-2 border-gray-200">
               <tr>
                 <th className="w-32 p-3 text-sm font-semibold tracking-wide text-left">
-                  Days
+                  Species
                 </th>
                 <th className="p-3 text-sm font-semibold tracking-wide text-left">
-                  Lunch
+                  Year
                 </th>
                 <th className="p-3 text-sm font-semibold tracking-wide text-left">
-                  Dinner
+                  Half Year
+                </th>
+                <th className="p-3 text-sm font-semibold tracking-wide text-left">
+                  Quarter
+                </th>
+                <th className="p-3 text-sm font-semibold tracking-wide text-left">
+                  Month
                 </th>
               </tr>
             </thead>
@@ -51,20 +57,20 @@ const MenuTable = ({ heading, sellerEmail }) => {
                     href="#"
                     className="font-bold text-blue-500 hover:underline"
                   >
-                    Monday
+                    Tiger
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                  {menuItem.monday_lunch &&
-                    menuItem.monday_lunch.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  2,00,000
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  {menuItem.monday_dinner &&
-                    menuItem.monday_dinner.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  1,00,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  50,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  17.000
                 </td>
               </tr>
               <tr className="bg-gray-50">
@@ -73,20 +79,20 @@ const MenuTable = ({ heading, sellerEmail }) => {
                     href="#"
                     className="font-bold text-blue-500 hover:underline"
                   >
-                    Tuesday
+                    Lion
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                  {menuItem.tuesday_lunch &&
-                    menuItem.tuesday_lunch.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  2,00,000
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  {menuItem.tuesday_dinner &&
-                    menuItem.tuesday_dinner.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  1,00,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  50,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  17.000
                 </td>
               </tr>
               <tr className="bg-white">
@@ -95,20 +101,20 @@ const MenuTable = ({ heading, sellerEmail }) => {
                     href="#"
                     className="font-bold text-blue-500 hover:underline"
                   >
-                    Wednesday
+                    Leapord
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                  {menuItem.wednesday_lunch &&
-                    menuItem.wednesday_lunch.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  1,00,000
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  {menuItem.wednesday_dinner &&
-                    menuItem.wednesday_dinner.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  50,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  25,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  9,000
                 </td>
               </tr>
               <tr className="bg-gray-50">
@@ -117,20 +123,20 @@ const MenuTable = ({ heading, sellerEmail }) => {
                     href="#"
                     className="font-bold text-blue-500 hover:underline"
                   >
-                    Thursday
+                    Sloth Bear
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                  {menuItem.thursday_lunch &&
-                    menuItem.thursday_lunch.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  1,00,000
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  {menuItem.thursday_dinner &&
-                    menuItem.thursday_dinner.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  50,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  25,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  9,000
                 </td>
               </tr>
               <tr className="bg-white">
@@ -139,20 +145,20 @@ const MenuTable = ({ heading, sellerEmail }) => {
                     href="#"
                     className="font-bold text-blue-500 hover:underline"
                   >
-                    Friday
+                    Hyena
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                  {menuItem.friday_lunch &&
-                    menuItem.friday_lunch.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                36,000
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  {menuItem.friday_dinner &&
-                    menuItem.friday_dinner.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  19,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  10,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  4,000
                 </td>
               </tr>
               <tr className="bg-gray-50">
@@ -161,20 +167,20 @@ const MenuTable = ({ heading, sellerEmail }) => {
                     href="#"
                     className="font-bold text-blue-500 hover:underline"
                   >
-                    Saturday
+                    Jackal
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                  {menuItem.saturday_lunch &&
-                    menuItem.saturday_lunch.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  30,000
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  {menuItem.saturday_dinner &&
-                    menuItem.saturday_dinner.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  16,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  9,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  3,500
                 </td>
               </tr>
               <tr className="bg-white">
@@ -183,20 +189,42 @@ const MenuTable = ({ heading, sellerEmail }) => {
                     href="#"
                     className="font-bold text-blue-500 hover:underline"
                   >
-                    Sunday
+                    Crocodile
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                  {menuItem.sunday_lunch &&
-                    menuItem.sunday_lunch.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  36,000
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  {menuItem.sunday_dinner &&
-                    menuItem.sunday_dinner.map((item, index) => (
-                      <p key={index}>{item}</p>
-                    ))}
+                  19,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  10,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  4,000
+                </td>
+              </tr>
+              <tr className="bg-white">
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  <a
+                    href="#"
+                    className="font-bold text-blue-500 hover:underline"
+                  >
+                    Python
+                  </a>
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
+                  8,000
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  4,500
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  2,300
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  800
                 </td>
               </tr>
             </tbody>

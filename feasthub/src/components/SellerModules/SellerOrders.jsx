@@ -47,13 +47,16 @@ const SellerOrders = () => {
                   S. No.
                 </th>
                 <th className="p-3 text-sm font-semibold tracking-wide text-left">
-                  Client Name
+                  Adopted By
+                </th>
+                <th className="p-3 text-sm font-semibold tracking-wide text-left">
+                  Animal
                 </th>
                 <th className="p-3 text-sm font-semibold tracking-wide text-left">
                   Plan Information
                 </th>
                 <th className="p-3 text-sm font-semibold tracking-wide text-left">
-                  Expiry
+                  Valid Till
                 </th>
                 <th className="p-3 text-sm font-semibold tracking-wide text-left">
                   Txn. ID
@@ -77,19 +80,22 @@ const SellerOrders = () => {
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                  Ashta Tiffins
+                  Rohan Borade
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  1 Month
+                  12 Month
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  30-10-2024
+                  30-10-2025
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  Tiger
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   #Uxhs14KNsnx8
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  1000
+                  200000
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   <span className="p-1.5 text-xs font-medium uppercase tracking-wider text-green-800 bg-green-200 rounded-lg bg-opacity-50">
@@ -107,19 +113,22 @@ const SellerOrders = () => {
                   </a>
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap ">
-                  Veg Paradise
+                  Atmaja
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  15 Days
+                  30 Days
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  30-10-2024
+                  30-05-2024
+                </td>
+                <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
+                  Python
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   #Uxhs76KS98hs
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                  1000
+                  800
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
                   <span className="p-1.5 text-xs font-medium uppercase tracking-wider text-red-800 bg-red-200 rounded-lg bg-opacity-50">

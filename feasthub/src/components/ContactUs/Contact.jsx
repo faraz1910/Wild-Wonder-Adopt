@@ -67,7 +67,7 @@ const Contact = () => {
             {" "}
             <button
               onClick={createContact}
-              className="w-full bg-red-600 py-3 rounded-xl text-white font-bold mt-6"
+              className="w-full bg-green-600 py-3 rounded-xl text-white font-bold mt-6"
             >
               Send Message
             </button>

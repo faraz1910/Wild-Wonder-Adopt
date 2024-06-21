@@ -6,8 +6,8 @@ const SideNav = () => {
     <>
       <div className="h-screen w-64  p-5">
         <div className="">
-          <p className="font-bold">Seller</p>
-          <h4 className="text-3xl font-bold -mt-2 text-red-600">Dashboard</h4>
+          <p className="font-bold">Admin</p>
+          <h4 className="text-3xl font-bold -mt-2 text-green-600">Dashboard</h4>
         </div>
         <div className="mt-8">
           <ul>
@@ -18,12 +18,12 @@ const SideNav = () => {
             </NavLink>
             <NavLink to="menu">
               <li className="text-lg my-4 py-2 pl-3 bg-gray-200 rounded-lg font-semibold">
-                Menu
+                Price List
               </li>
             </NavLink>
             <NavLink to="orders">
               <li className="text-lg my-4 py-2 pl-3 bg-gray-200 rounded-lg font-semibold">
-                Orders
+                History
               </li>
             </NavLink>
           </ul>

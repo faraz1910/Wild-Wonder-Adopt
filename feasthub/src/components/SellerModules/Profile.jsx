@@ -84,12 +84,12 @@ const Profile = () => {
   return (
     <>
       <div className="w-full flex justify-center items-center bg-white">
-        <div className="h-auto flex flex-col justify-center items-center bg-slate-200 rounded-2xl px-6 py-6">
+        <div className="h-auto flex flex-col justify-center items-center bg-slate-200 rounded-2xl px-6 py-6 mt-20">
           <div className="flex">
             <label className="form-control w-full max-w-xs mx-3">
               <div className="label">
                 <span className="label-text">First Name</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
+                <span className="label-text-al text-green-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="text"
@@ -103,7 +103,7 @@ const Profile = () => {
             <label className="form-control w-full max-w-xs mx-3">
               <div className="label">
                 <span className="label-text">Last Name</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
+                <span className="label-text-al text-green-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="text"
@@ -119,7 +119,7 @@ const Profile = () => {
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">Email Address</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
+                <span className="label-text-al text-green-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="email"
@@ -132,8 +132,8 @@ const Profile = () => {
           <div className="w-full px-3">
             <label className="form-control w-full">
               <div className="label">
-                <span className="label-text">Business Name</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
+                <span className="label-text">Employee ID</span>
+                <span className="label-text-al text-green-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="text"
@@ -144,10 +144,10 @@ const Profile = () => {
                 onChange={handleInputChange}
               />
             </label>
-            <label className="form-control w-full">
+            {/* <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">GST No.</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
+                <span className="label-text-al text-green-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="text"
@@ -157,11 +157,11 @@ const Profile = () => {
                 value={sellerData.gstNo}
                 onChange={handleInputChange}
               />
-            </label>
+            </label> */}
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">Phone No.</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
+                <span className="label-text-al text-green-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="number"
@@ -175,7 +175,7 @@ const Profile = () => {
             <label className="form-control w-full">
               <div className="label">
                 <span className="label-text">Address</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
+                <span className="label-text-al text-green-600 text-xl font-bold">*</span>
               </div>
               <input
                 type="text"
@@ -186,7 +186,7 @@ const Profile = () => {
                 onChange={handleInputChange}
               />
             </label>
-            <label className="form-control w-full">
+            {/* <label className="form-control w-full">
               <span className="label-text">Set Price per day</span>
               <input
                 type="text"
@@ -196,13 +196,13 @@ const Profile = () => {
                 value={sellerData.price}
                 onChange={handleInputChange}
               />
-            </label>
+            </label> */}
 
 
             <label className="form-control w-full">
               <div className="label">
-                <span className="label-text">Set Meal Type</span>
-                <span className="label-text-al text-red-600 text-xl font-bold">*</span>
+                <span className="label-text">Position</span>
+                <span className="label-text-al text-green-600 text-xl font-bold">*</span>
               </div>
               <select
                 className="p-2 border rounded-lg mx-3 shadow-md"
@@ -210,14 +210,14 @@ const Profile = () => {
                 onChange={handleInputChange}
                 name="type"
               >
-                <option value="">Choose Meal Type</option>
-                <option value="veg">Veg</option>
-                <option value="non-veg">Non-Veg</option>
-                <option value="veg and non-veg">Veg & Non-Veg</option>
+                <option value="">Designation --</option>
+                <option value="veg">Officer</option>
+                <option value="non-veg">Guard</option>
+                <option value="veg and non-veg">Developer</option>
               </select>
             </label>
 
-            <button onClick={createSeller} className="w-full bg-red-600 py-3 rounded-xl text-white font-bold mt-6">
+            <button onClick={createSeller} className="w-full bg-green-600 py-3 rounded-xl text-white font-bold mt-6">
               Submit
             </button>
           </div>
