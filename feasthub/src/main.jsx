@@ -31,6 +31,7 @@ import NewMenu from "./components/SellerModules/NewMenu.jsx";
 import BuyerMain from "./components/buyer_dashboard/BuyerMain.jsx";
 import BuyerOrder from "./components/buyer_dashboard/BuyerOrder.jsx";
 import SellerOrders from "./components/SellerModules/SellerOrders.jsx";
+import AdoptForm from "./components/Order/AdoptForm.jsx";
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
@@ -56,7 +57,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login_Choice />} />
       <Route path="order" element={<Order />} />
       <Route>
-        <Route path="/orderinfo/:orderId" element={<Order3 />} />
+        <Route path="/orderinfo/" element={<AdoptForm />} />
         {/* Other routes go here */}
       </Route>
       <Route path="whyus" element={<WhyUs/>} />

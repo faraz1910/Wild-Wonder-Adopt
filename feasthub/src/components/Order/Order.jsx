@@ -100,7 +100,7 @@ const Order = () => {
                 </div>
                 <Link to={`/orderinfo/`}>
                   <button className="text-white bg-green-600 focus:ring-4 focus:ring-green-300 font-extrabold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none">
-                    View Info
+                  Adopt Now
                   </button>
                 </Link>
               </div>
@@ -130,7 +130,7 @@ const Order = () => {
                 </div>
                 <Link to={`/orderinfo/`}>
                   <button className="text-white bg-green-600 focus:ring-4 focus:ring-green-300 font-extrabold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none">
-                    View Info
+                  Adopt Now
                   </button>
                 </Link>
               </div>
@@ -160,7 +160,7 @@ const Order = () => {
                 </div>
                 <Link to={`/orderinfo/`}>
                   <button className="text-white bg-green-600 focus:ring-4 focus:ring-green-300 font-extrabold rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none">
-                    View Info
+                    Adopt Now
                   </button>
                 </Link>
               </div>
